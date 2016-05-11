@@ -1,0 +1,23 @@
+{
+    "name": "yaf-api",
+    "description": "yaf-api",
+    "keywords": ["api", "yaf"],
+    "license": "MIT",
+    "type": "project",
+        "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog": "^1.13",
+        "illuminate/database": "*",
+        "twig/twig":"~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.7.3",
+        "phpspec/phpspec": "2.2.1",
+    },
+    "autoload": {
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
+
