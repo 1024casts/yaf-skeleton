@@ -2,3 +2,6 @@
 readme.txt
 vendor
 composer.lock
+logs/*
+
+.idea/
