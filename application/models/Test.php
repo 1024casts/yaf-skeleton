@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Db\Model;
+use Db\model;
 
-class Test extends Model
+class Test extends model
 {
 
     public function find($id)
     {
-        return $this->_db->select('users', array('id' => $id));
+        $where = array('id' => 41);
+        $ret = $this->_db->select($where);
+        var_dump($ret);
     }
 }

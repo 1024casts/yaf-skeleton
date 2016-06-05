@@ -22,12 +22,22 @@ class IndexController extends AbstractApi
     {
         // 获取
         $user = User::find(47);
+
         //$httpClent = new Http();
         //$httpClent->get('https://api.github.com/users/qloog/repos');
-        $this->sendOutput($user);
+        Log::info('file nums:', get_included_files());
+        $this->successJson($user);
+
     }
 
     public function mysqlAction()
+    {
+        $client = new test();
+        $user = $client->find(41);
+        dd($user); // dd 放到
+    }
+
+    public function pdoAction()
     {
         $client = new test();
         $user = $client->find(41);

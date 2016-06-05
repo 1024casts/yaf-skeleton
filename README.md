@@ -2,6 +2,9 @@
 api skeleton base on yaf
 
 
+## yaf 中文手册
+
+ http://php.net/manual/zh/book.yaf.php
 
 ## 参考：
 - http://www.laruence.com/manual/

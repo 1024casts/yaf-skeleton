@@ -60,11 +60,6 @@ class Bootstrap extends Bootstrap_Abstract
         // Yaf_Route_Regex
     }
 
-    public function _initView(Dispatcher $dispatcher)
-    {
-        //在这里注册自己的view控制器，例如smarty,firekylin
-    }
-
     /**
      * 初始化本地类库的名称空间 Biz Ns
      * 例如本地类库 Biz_Test, Ns\Test 放在library目录下
@@ -74,7 +69,7 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initRegisterLocalClass(Yaf\Dispatcher $dispatcher)
     {
         $loader = Yaf\Loader::getInstance();
-        $loader->registerLocalNamespace(array('Core'));
+        $loader->registerLocalNamespace(array('Core','Db'));
     }
 
     /**
@@ -88,6 +83,19 @@ class Bootstrap extends Bootstrap_Abstract
         if (file_exists($autoload)) {
             Loader::import($autoload);
         }
+    }
+
+    public function _initView(Dispatcher $dispatcher)
+    {
+        //在这里注册自己的view控制器，例如smarty,firekylin
+    }
+
+    /**
+     * @param Dispatcher $dispatcher
+     */
+    protected function _initTwig(Dispatcher $dispatcher)
+    {
+        $dispatcher->setView(new Twig(APP_PATH . '/views/', $this->config->twig->toArray()));
     }
 
     /**
