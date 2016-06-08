@@ -1,8 +1,7 @@
 
-readme.txt
 vendor
 composer.lock
-storage/logs
-storage/caches
+storage/caches/*
+storage/logs/*
 
 .idea/
