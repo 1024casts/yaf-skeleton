@@ -1,10 +1,23 @@
-## yaf-api
-api skeleton base on yaf
+## yaf-skeleton
+常用功能和一些的类库
+
+## Required
+
+- 安装YAF扩展 [yaf安装](http://php.net/manual/zh/yaf.installation.php)
+- php.ini 配置: `yaf.use_namespace = 1`
+- 使用命名空间引入需要的文件
+ 
+## 说明
+
+- 配置环境名 开发环境: `yaf.environ = develop` , 生产环境: `yaf.environ = product`
+- 默认情况下`controllers`,`views`,`modules`,`library`,`models`,`plugins` 是在根 namespace
 
 
 ## yaf 中文手册
 
- http://php.net/manual/zh/book.yaf.php
+ - http://php.net/manual/zh/book.yaf.php
+ - http://www.laruence.com/manual/index.html
+ 
 
 ## 参考：
 - http://www.laruence.com/manual/
