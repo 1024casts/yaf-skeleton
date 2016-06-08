@@ -14,11 +14,6 @@ use Yaf\Registry;
 use Yaf\Loader;
 use Yaf\Dispatcher;
 use Yaf\Application;
-use Init\XHProfPlugin;
-use Support\Log;
-use Monolog\Logger;
-use Monolog\Handler\NullHandler;
-use Monolog\Handler\StreamHandler;
 use Illuminate\Events\Dispatcher as LDispatcher;
 use Illuminate\Container\Container as LContainer;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -34,7 +29,7 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initConfig()
     {
         //把配置保存起来
-        $this->config = Application::app()->getConfig();
+        $this->config = Application::app()->getConfig()->toArray();
         Registry::set('config', $this->config);
     }
 
@@ -83,6 +78,13 @@ class Bootstrap extends Bootstrap_Abstract
         if (file_exists($autoload)) {
             Loader::import($autoload);
         }
+
+        $loader = Loader::getInstance();
+
+        $autoload = APP_ROOT . '/vendor/autoload.php';
+        if (file_exists($autoload)) {
+            $loader->import($autoload);
+        }
     }
 
     public function _initView(Dispatcher $dispatcher)
@@ -93,10 +95,10 @@ class Bootstrap extends Bootstrap_Abstract
     /**
      * @param Dispatcher $dispatcher
      */
-    protected function _initTwig(Dispatcher $dispatcher)
-    {
-        $dispatcher->setView(new Twig(APP_PATH . '/views/', $this->config->twig->toArray()));
-    }
+    //protected function _initTwig(Dispatcher $dispatcher)
+    //{
+    //    $dispatcher->setView(new Twig(APP_PATH . '/views/', $this->config->twig->toArray()));
+    //}
 
     /**
      * 初始化 Eloquent ORM
@@ -111,61 +113,5 @@ class Bootstrap extends Bootstrap_Abstract
         $capsule->setEventDispatcher(new LDispatcher(new LContainer));
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
-    }
-
-    /**
-     * 错误开关
-     */
-    public function _initErrors()
-    {
-        //报错是否开启
-        if ($this->config->application->showErrors) {
-            error_reporting(-1);
-            ini_set('display_errors', 'On');
-        } else {
-            error_reporting(0);
-            ini_set('display_errors', 'Off');
-        }
-        //set_error_handler(['Error', 'errorHandler']);
-    }
-
-    /**
-     * Initialize logger.
-     */
-    public function _initLogger()
-    {
-        if (Log::hasLogger()) {
-            return;
-        }
-        $logger = new Logger('yaf-api');
-        if (!$this->config->application->debug || defined('PHPUNIT_RUNNING')) {
-            $logger->pushHandler(new NullHandler());
-        } elseif ($logFile = $this->config->log->directory) {
-            $logger->pushHandler(new StreamHandler($logFile . date('Y-m-d') . '.log', $this->config->log->level));
-        }
-        Log::setLogger($logger);
-    }
-
-    /**
-     * 读取相应的配置初始化XHProf
-     *
-     * @access public
-     * @param \Yaf\Dispatcher $dispatcher
-     * @return void
-     */
-    public function _initXHProf(Dispatcher $dispatcher)
-    {
-        //if (isset($this->config->xhprof)) {
-        //    $xhprof_config = $this->config->xhprof->toArray();
-        //    if (extension_loaded('xhprof') &&  $xhprof_config && isset($xhprof_config['open']) && $xhprof_config['open'] ) {
-        //        $default_flags = XHPROF_FLAGS_CPU | XHPROF_FLAGS_MEMORY;
-        //        $ignore_functions = isset($xhprof_config['ignored_functions']) && is_array($xhprof_config['ignored_functions']) ? $xhprof_config['ignored_functions'] : array();
-        //        if (isset($xhprof_config['flags'])) {
-        //            xhprof_enable($xhprof_config['flags'], $ignore_functions);
-        //        } else {
-        //            xhprof_enable($default_flags, $ignore_functions);
-        //        }
-        //    }
-        //}
     }
 }
