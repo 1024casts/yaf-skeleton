@@ -43,8 +43,16 @@ queue.name = default
 queue.redis = default
 
 ; cache
-cache.type = redis
-cache.redis = default
+cache.type = memcached
+;cache.redis = default
+
+; Memcached
+memcached.0.host    = 127.0.0.1
+memcached.0.port    = 11211
+memcached.0.weight  = 50
+memcached.1.host    = 127.0.0.1
+memcached.1.port    = 11211
+memcached.1.weight  = 5
 
 ; Redis
 redis.default.host = 127.0.0.1

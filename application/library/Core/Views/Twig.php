@@ -1,16 +1,19 @@
 <?php
 
-namespace Core;
+namespace Core\Views;
 
+use Yaf\View_Interface;
 use \Twig_Environment;
 use \Twig_Loader_Filesystem;
 
-class Twig implements \Yaf\View_Interface
+class Twig implements View_Interface
 {
     /** @var \Twig_Loader_Filesystem */
     protected $loader;
+
     /** @var \Twig_Environment */
     protected $twig;
+
     protected $variables = array();
 
     /**

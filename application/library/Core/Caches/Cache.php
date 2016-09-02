@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Cache;
+namespace Core\Caches;
 
 use Yaf\Registry;
 use Core\Exceptions\ConfigException;

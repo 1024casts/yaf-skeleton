@@ -1,29 +1,28 @@
 <?php
 
-namespace Core\Cache;
+namespace Core\Caches;
 
 use Core\Contracts\Cache\CacheContract;
 
 /**
- * Redis Cache
+ * Memcached Cache
  */
-class Redis implements CacheContract
+class Memcached implements CacheContract
 {
     /**
-     *声明redis对象
-     *
-     * @var \Redis
+     * 声明memcache对象
      */
-    private $redis;
+    private $mem;
 
     /**
      * 创建连接
      *
-     * @param $redisObj
+     * @param $config
      */
-    public function __construct($redisObj)
+    public function __construct($config)
     {
-        $this->redis = $redisObj;
+        $this->mem = new \Memcached();
+        $this->mem->addServers($config);
     }
 
     /**
@@ -31,18 +30,18 @@ class Redis implements CacheContract
      */
     public function __destruct()
     {
-        $this->redis->close();
+        $this->mem->quit();
     }
 
     /**
      * 获取缓存
      *
-     * @param string $key
+     * @param type $key
      * @return mixed
      */
     public function get($key)
     {
-        return $this->redis->get($key);
+        return $this->mem->get($key);
     }
 
     /**
@@ -56,7 +55,10 @@ class Redis implements CacheContract
         if (!is_array($keys)) {
             return false;
         }
-        return $this->redis->mget($keys);
+        foreach ($keys as $n => $k){
+            $keys[$n] = $this->mem->get($k);
+        }
+        return $this->mem->getMulti($keys);
     }
 
     /**
@@ -69,7 +71,7 @@ class Redis implements CacheContract
      */
     public function set($key, $val, $expire = 0)
     {
-        return $this->redis->setEx($key, $expire, $val);
+        return $this->mem->set($key, $val, $expire);
     }
 
     /**
@@ -84,13 +86,7 @@ class Redis implements CacheContract
         if (!is_array($data)) {
             return false;
         }
-        $retFlag = $this->redis->mset($data);
-        if ($expire > 0) {
-            foreach ($data as $key => $value) {
-                $this->redis->expire($key, $expire);
-            }
-        }
-        return $retFlag;
+        return $this->setMulti($data, $expire);
     }
 
     /**
@@ -102,7 +98,10 @@ class Redis implements CacheContract
      */
     public function setExpire($key, $expire = 0)
     {
-        return $this->redis->expire($key, $expire);
+        $val = $this->mem->get($key);
+        if (isset($val)) {
+            return $this->set($key, $val, $expire);
+        }
     }
 
     /**
@@ -115,7 +114,7 @@ class Redis implements CacheContract
     public function expiresAt($key, $time = 0)
     {
         $expire = $time - time();
-        return $this->redis->expire($key, $expire);
+        return $this->setExpire($key,$expire);
     }
 
     /**
@@ -126,7 +125,7 @@ class Redis implements CacheContract
      */
     public function delete($key)
     {
-        return $this->redis->delete($key);
+        return $this->mem->delete($key);
     }
 
     /**
@@ -136,9 +135,10 @@ class Redis implements CacheContract
      * @param int $offset 增加的值
      * @return mixed
      */
+
     public function increment($key, $offset = 1)
     {
-        return $this->redis->incr($key, $offset);
+        return $this->mem->increment($key, $offset);
     }
 
     /**
@@ -148,9 +148,8 @@ class Redis implements CacheContract
      * @param int $offset 减少的值
      * @return mixed
      */
-
     public function decrement($key, $offset = 1)
     {
-        return $this->redis->decr($key, $offset);
+        return $this->mem->decrement($key, $offset);
     }
 }

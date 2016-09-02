@@ -1,10 +1,11 @@
 <?php
 
+use Core\Controllers\Web;
 /**
  * 首页
  *
  */
-class IndexController extends Yaf\Controller_Abstract
+class IndexController extends Web
 {
 
     public function indexAction()

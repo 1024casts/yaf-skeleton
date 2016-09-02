@@ -1,13 +1,18 @@
 <?php
+
 /**
  * yaf 框架报错类调用
  *  默认错误会调用这个Controller 中 ErrorAction
  */
-class ErrorController extends \Yaf\Controller_Abstract {
+class ErrorController extends \Yaf\Controller_Abstract
+{
     private $_config;
-    public function init(){
+
+    public function init()
+    {
         $this->_config = Yaf\Application::app()->getConfig();
     }
+
     /**
      * [具体错误处理]
      * @param  Exception $exception [description]

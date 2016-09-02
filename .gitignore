@@ -3,5 +3,6 @@ vendor
 composer.lock
 storage/caches/*
 storage/logs/*
+conf/application.ini
 
 .idea/

@@ -1,11 +1,7 @@
 <?php
 
-use Core\AbstractApi;
 use App\Models\User;
-use App\Models\Test;
-use Yar\YarClient;
 use Support\Log;
-use Core\Http;
 
 class IndexController extends AbstractApi
 {

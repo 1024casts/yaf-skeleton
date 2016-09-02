@@ -1,17 +1,21 @@
 <?php
 
-namespace Core\Http;
+namespace Core\Http\Support;
+
+use Core\Exceptions\RuntimeException;
+use Core\Http\Support\Defines\Code;
+use Yaf\Response_Abstract;
 
 /**
  * 用于格式化的数据输出,目前支持JSON
  */
-trait ResponseTrait
+trait OutputTrait
 {
     /**
      * @var string Code Class的名称
      */
     protected $code = Code::class;
-
+    
     /**
      * 输出成功
      *
@@ -57,24 +61,35 @@ trait ResponseTrait
     /**
      * 输出结果并退出
      *
-     * @param int $code
+     * @param int    $code
      * @param string $msg
-     * @param array $data
+     * @param array  $data
      * @return bool
+     * @throws RuntimeException
      */
     public function output($code, $msg = '', array $data = null)
     {
         $result = json_encode([
             'code' => $code,
             'msg' => $msg,
-            'data' => $data,
+            'data' => $data === null ? [] : $data,
         ], $data === null ? JSON_FORCE_OBJECT : 0);
 
+        $response = null;
+        if (method_exists($this, 'getResponse')) {
+            $response = $this->getResponse();
+        } elseif (property_exists($this, 'response')) {
+            $response = $this->response;
+        }
+
+        if (! $response instanceof Response_Abstract) {
+            throw new RuntimeException('Need response object');
+        }
 
         if (isset($_GET['_call']) && $callback = $_GET['_call']) {
-            echo htmlspecialchars($callback) . '(' . $result . ')';
+            $response->setBody(htmlspecialchars($callback) . '(' . $result . ')');
         } else {
-            echo $result;
+            $response->setBody($result);
         }
 
         return true;
