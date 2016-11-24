@@ -2,9 +2,9 @@
 
 namespace Core\Caches;
 
-use Yaf\Registry;
 use Core\Exceptions\ConfigException;
-use Core\Database\Redis as RedisDb;
+use Yaf\Registry;
+use Core\Databases\RedisDb;
 
 /**
  * 缓存类
@@ -12,7 +12,7 @@ use Core\Database\Redis as RedisDb;
 class Cache
 {
     /**
-     * @var CacheContract
+     * @var CacheInterface
      */
     protected static $instance;
 
@@ -29,7 +29,6 @@ class Cache
         if (!isset($config['cache']['type'])) {
             throw new ConfigException('No cache config!');
         }
-
 
         switch ($config['cache']['type']) {
             case 'redis' :

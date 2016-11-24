@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Core\Databases\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends EloquentModel
+class User extends Model
 {
     // 软删除
     use SoftDeletes;

@@ -2,12 +2,10 @@
 
 namespace Core\Caches;
 
-use Core\Contracts\Cache\CacheContract;
-
 /**
  * Memcached Cache
  */
-class Memcached implements CacheContract
+class Memcached implements CacheInterface
 {
     /**
      * 声明memcache对象
@@ -36,7 +34,7 @@ class Memcached implements CacheContract
     /**
      * 获取缓存
      *
-     * @param type $key
+     * @param string $key
      * @return mixed
      */
     public function get($key)
@@ -102,6 +100,8 @@ class Memcached implements CacheContract
         if (isset($val)) {
             return $this->set($key, $val, $expire);
         }
+
+        return false;
     }
 
     /**
@@ -126,6 +126,14 @@ class Memcached implements CacheContract
     public function delete($key)
     {
         return $this->mem->delete($key);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function deleteMulti($keys)
+    {
+        return $this->mem->deleteMulti($keys);
     }
 
     /**

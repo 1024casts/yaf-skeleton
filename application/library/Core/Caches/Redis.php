@@ -2,12 +2,10 @@
 
 namespace Core\Caches;
 
-use Core\Contracts\Cache\CacheContract;
-
 /**
  * Redis Cache
  */
-class Redis implements CacheContract
+class Redis implements CacheInterface
 {
     /**
      *声明redis对象
@@ -42,7 +40,12 @@ class Redis implements CacheContract
      */
     public function get($key)
     {
-        return $this->redis->get($key);
+        $ret = $this->redis->get($key);
+        if (is_numeric($ret)) {
+            return $ret;
+        }
+
+        return $ret === false ? false : json_decode($ret, true);
     }
 
     /**
@@ -56,7 +59,13 @@ class Redis implements CacheContract
         if (!is_array($keys)) {
             return false;
         }
-        return $this->redis->mget($keys);
+
+        $ret = $this->redis->mget($keys);
+        foreach ($ret as & $v) {
+            $v = json_decode($v, true);
+        }
+
+        return $ret;
     }
 
     /**
@@ -69,7 +78,15 @@ class Redis implements CacheContract
      */
     public function set($key, $val, $expire = 0)
     {
-        return $this->redis->setEx($key, $expire, $val);
+        if (!is_numeric($val)) {
+            $val = json_encode($val);
+        }
+
+        if ($expire) {
+            return $this->redis->setex($key, $expire, $val);
+        }
+
+        return $this->redis->set($key, $val);
     }
 
     /**
@@ -84,12 +101,20 @@ class Redis implements CacheContract
         if (!is_array($data)) {
             return false;
         }
+
+        foreach ($data as &$d) {
+            if (!is_numeric($d)) {
+                $d = json_encode($d);
+            }
+        }
+
         $retFlag = $this->redis->mset($data);
         if ($expire > 0) {
             foreach ($data as $key => $value) {
                 $this->redis->expire($key, $expire);
             }
         }
+
         return $retFlag;
     }
 
@@ -130,6 +155,14 @@ class Redis implements CacheContract
     }
 
     /**
+     * @inheritdoc
+     */
+    public function deleteMulti($keys)
+    {
+        return call_user_func_array([$this->redis, 'delete'], $keys);
+    }
+
+    /**
      * 递增某个Key,不存在则自动创建
      *
      * @param string $key 缓存Key
@@ -138,7 +171,7 @@ class Redis implements CacheContract
      */
     public function increment($key, $offset = 1)
     {
-        return $this->redis->incr($key, $offset);
+        return $this->redis->incrBy($key, $offset);
     }
 
     /**
@@ -148,9 +181,8 @@ class Redis implements CacheContract
      * @param int $offset 减少的值
      * @return mixed
      */
-
     public function decrement($key, $offset = 1)
     {
-        return $this->redis->decr($key, $offset);
+        return $this->redis->decrBy($key, $offset);
     }
 }
