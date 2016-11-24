@@ -39,7 +39,7 @@
 │   ├── modules                             // 模块目录,里面可以有多个模块
 │   │   ├── Api                             // APP接口位置
 │   │   ├── Console                         // 脚本目录
-│   │   ├── Admin
+│   │   ├── Admin                           // 后台目录
 │   │   │   ├── Bootstrap.php               // Admin的Bootstrap文件,只对Admin生效
 │   │   │   ├── controllers                 // controller 目录
 │   │   │   │   ├── Base.php
@@ -48,7 +48,7 @@
 │   │   │       ├── index                   // 业务目录
 │   │   │       │   └── index.phtml
 │   │   │       └── layout.phtml            // 布局文件
-│   │   └── Home
+│   │   └── Home                            // 前端目录
 │   │       ├── controllers
 │   │       │   ├── Forum.php
 │   │       │   └── User.php
@@ -59,13 +59,13 @@
 │   │           └── forum
 │   │               ├── list.phtml
 │   │               └── detail.phtml
-│   ├── plugins
+│   ├── plugins                             // 这里放置一些插件
 │   │   └── Init.php
-│   ├── services
+│   ├── services                            // 业务逻辑封装
 │   │   ├── CommonService.php
 │   │   ├── UserService.php
-│   ├── tests
-│   └── views
+│   ├── tests                               // 单元测试相关
+│   └── views                               // 单模块的试图目录
 │       ├── error
 │       │   └── error.phtml
 │       └── index
@@ -97,7 +97,7 @@
 
 分三种路由,其中静态路由是默认路由,也是常用路由模式,如果需要其他特殊处理可以使用正则或Rewrite模式。
 
- - 静态路由
+ - 简单路由
  - Rewrite路由
  - 正则路由
  
