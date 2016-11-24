@@ -28,7 +28,7 @@ class Bootstrap extends Bootstrap_Abstract
      */
     public function _initConfig()
     {
-        //把配置保存起来
+        // 保存配置
         $this->config = Application::app()->getConfig()->toArray();
         Registry::set('config', $this->config);
     }
@@ -56,29 +56,12 @@ class Bootstrap extends Bootstrap_Abstract
     }
 
     /**
-     * 初始化本地类库的名称空间 Biz Ns
-     * 例如本地类库 Biz_Test, Ns\Test 放在library目录下
-     * library/biz/Test.php
-     * library/ns/Test.php
-     */
-    public function _initRegisterLocalClass(Yaf\Dispatcher $dispatcher)
-    {
-        $loader = Yaf\Loader::getInstance();
-        $loader->registerLocalNamespace(array('Core','Db'));
-    }
-
-    /**
      * 初始化 composer autoload
      *
      * @param Yaf\Dispatcher $dispatcher
      */
     public function _initComposerAutoload(Dispatcher $dispatcher)
     {
-        $autoload = APP_ROOT . '/vendor/autoload.php';
-        if (file_exists($autoload)) {
-            Loader::import($autoload);
-        }
-
         $loader = Loader::getInstance();
 
         $autoload = APP_ROOT . '/vendor/autoload.php';
@@ -87,9 +70,14 @@ class Bootstrap extends Bootstrap_Abstract
         }
     }
 
+    /**
+     * @param Dispatcher $dispatcher
+     */
     public function _initView(Dispatcher $dispatcher)
     {
-        //在这里注册自己的view控制器，例如smarty,firekylin
+        //在这里注册自己的view控制器，例如smarty
+        // 不自动渲染视图
+        $dispatcher->autoRender(false);
     }
 
     /**
@@ -108,7 +96,7 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initDefaultDbAdapter(Dispatcher $dispatcher)
     {
         $capsule = new Capsule();
-        $db = $this->config->database->toArray();
+        $db = $this->config['database'];
         $capsule->addConnection($db);
         $capsule->setEventDispatcher(new LDispatcher(new LContainer));
         $capsule->setAsGlobal();

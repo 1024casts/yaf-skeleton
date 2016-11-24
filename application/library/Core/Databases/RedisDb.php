@@ -1,16 +1,16 @@
 <?php
 
-namespace Core\Database;
+namespace Core\Databases;
 
 use Yaf\Registry;
-use Yaf\Config_Abstract as Config;
 use Core\Exceptions\ConfigException;
 use RedisException;
+use Redis;
 
 /**
  * Redis数据库
  */
-class RedisDb extends \Redis
+class RedisDb extends Redis
 {
     /**
      * Redis对象实例
@@ -48,6 +48,10 @@ class RedisDb extends \Redis
             isset($config['timeout']) ? $config['timeout'] : 1
         )) {
             throw new RedisException('Redis server went away!');
+        }
+
+        if (isset($config['prefix'])) {
+            $redis->setOption(Redis::OPT_PREFIX, $config['prefix']);
         }
 
         return self::$instance[$name] = $redis;
