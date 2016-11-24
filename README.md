@@ -10,40 +10,44 @@
  
 ## 说明
 
-- 配置环境名 开发环境: `yaf.environ = develop` , 生产环境: `yaf.environ = production`
-- 默认情况下`controllers`,`views`,`modules`,`library`,`models`,`plugins` 是在根 namespace
+- 配置环境 开发环境: `yaf.environ = develop` , 生产环境: `yaf.environ = production`
+- 默认情况下 `controllers`,`views`,`modules`,`library`,`models`,`plugins` 是在根 namespace
+- service是目录 namespace 是配置在 `App\Services` 下,详见 `composer.json`
+- 第三方类库使用composer安装
 
 ## 目录结构
 
-```shelll
+```shell
 .
 ├── README.md
 ├── application
-│   ├── Bootstrap.php
-│   ├── controllers
-│   │   ├── Error.php
+│   ├── Bootstrap.php                       // app启动文件
+│   ├── controllers                         // 默认controller
+│   │   ├── Error.php                       // 错误controller, 出错时会调用该文件
 │   │   └── Index.php
-│   ├── defines
+│   ├── constants                           // 常量定义目录,按模块划分文件
 │   │   ├── Forum.php
 │   │   └── User.php
-│   ├── library
+│   ├── library                             // 框架lib库, 所有自定的都可以写到这里来
 │   │   ├── Core
 │   │   │   ├── Databases
 │   │   │   └── Captcha
 │   │   └── README.md
-│   ├── models
+│   ├── models                              // model目录
 │   │   ├── User.php
 │   │   └── Forum.php
-│   ├── modules
+│   ├── modules                             // 模块目录,里面可以有多个模块
+│   │   ├── Api                             // APP接口位置
+│   │   ├── Console                         // 脚本目录
 │   │   ├── Admin
-│   │   │   ├── Bootstrap.php
-│   │   │   ├── controllers
+│   │   │   ├── Bootstrap.php               // Admin的Bootstrap文件,只对Admin生效
+│   │   │   ├── controllers                 // controller 目录
 │   │   │   │   ├── Base.php
 │   │   │   │   └── Index.php
-│   │   │   └── views
-│   │   │       ├── index
+│   │   │   └── views                       // 模板目录
+│   │   │       ├── index                   // 业务目录
 │   │   │       │   └── index.phtml
-│   │   │       └── layout.phtml
+│   │   │       └── layout.phtml            // 布局文件
 │   │   └── Home
 │   │       ├── controllers
 │   │       │   ├── Forum.php
@@ -75,13 +79,10 @@
 │   ├── application.ini
 │   ├── application.ini.example
 │   └── routes.php
-├── doc
-│   └── project.sql
 ├── public
 │   ├── favicon.ico
 │   ├── index.php
 │   └── assets
-│       ├── attchments
 │       ├── css
 │       ├── img
 │       └── js
@@ -109,7 +110,6 @@
   *
   * File: routes.php
   */
- 
  return [
      // 正则路由
      'news' => [
