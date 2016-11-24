@@ -30,8 +30,15 @@
 │   │   └── User.php
 │   ├── library                             // 框架lib库, 所有自定的都可以写到这里来
 │   │   ├── Core
+│   │   │   ├── Caches
+│   │   │   ├── Captcha
+│   │   │   ├── Controllers
 │   │   │   ├── Databases
-│   │   │   └── Captcha
+│   │   │   ├── Http
+│   │   │   ├── Support
+│   │   │   ├── Upload
+│   │   │   ├── Validators
+│   │   │   └── Views
 │   │   └── README.md
 │   ├── models                              // model目录
 │   │   ├── User.php
