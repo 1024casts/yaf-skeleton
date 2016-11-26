@@ -66,7 +66,7 @@
 │   │           └── forum
 │   │               ├── list.phtml
 │   │               └── detail.phtml
-│   ├── plugins                             // 这里放置一些插件
+│   ├── plugins                             // 插件目录
 │   │   └── Init.php
 │   ├── services                            // 业务逻辑封装
 │   │   ├── CommonService.php
@@ -82,7 +82,7 @@
 │   └── run.php
 ├── composer.json
 ├── composer.lock
-├── conf
+├── conf                                    // 配置目录
 │   ├── application.ini
 │   ├── application.ini.example
 │   └── routes.php
@@ -104,9 +104,12 @@
 
 分三种路由,其中静态路由是默认路由,也是常用路由模式,如果需要其他特殊处理可以使用正则或Rewrite模式。
 
- - 简单路由
+ - 静态路由(默认)
+ - 简单(Simple)路由
+ - Supervar路由
+ - Map路由
  - Rewrite路由
- - 正则路由
+ - 正则(Regex)路由
  
  Demo:
  

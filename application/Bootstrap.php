@@ -41,6 +41,11 @@ class Bootstrap extends Bootstrap_Abstract
         //$dispatcher->registerPlugin(new XHProfPlugin());
     }
 
+    /**
+     * 注册路由
+     *
+     * @param Dispatcher $dispatcher
+     */
     public function _initRoute(Dispatcher $dispatcher)
     {
         //在这里注册自己的路由协议,默认使用简单路由
@@ -53,6 +58,9 @@ class Bootstrap extends Bootstrap_Abstract
         // Yaf_Route_Map
         // Yaf_Route_Rewrite
         // Yaf_Route_Regex
+
+        $config = require(APP_ROOT . '/conf/routes.php');
+        $dispatcher->getRouter()->addConfig($config);
     }
 
     /**
