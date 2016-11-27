@@ -189,6 +189,12 @@
     }
 ```
 
+### 异常和错误
+
+如果配置文件中`appliation.dispatcher.throwException` 设为1或true,Yaf会抛异常, 否则则会触发错误。
+当Yaf遇到未捕获异常的时候, 就会把运行权限, 交给当前模块的Error Controller的Error Action动作, 而异常或作为请求的一个参数, 传递给Error Action.
+错误页默认在`application/views/error/error.phtml`, 可以进行自定义处理。
+
 ## yaf 中文手册
 
  - http://php.net/manual/zh/book.yaf.php

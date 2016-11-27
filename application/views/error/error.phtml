@@ -1,4 +1,12 @@
-<?php
-//echo "Error Msg:"  . $exception->getMessage();
-echo 'error view';
-?>
+<html>
+<head>
+    <title>Error</title>
+</head>
+<body>
+<?=$type?>
+<?=$message?>
+<?php if (isset($debug) && $debug) :?>
+    <?=$debug?>
+<?php endif ?>
+</body>
+</html>
