@@ -86,9 +86,11 @@ trait OutputTrait
             throw new RuntimeException('Need response object');
         }
 
-        if (isset($_GET['_call']) && $callback = $_GET['_call']) {
+        // support jsonp
+        if (isset($_GET['_callback']) && $callback = $_GET['_callback']) {
             $response->setBody(htmlspecialchars($callback) . '(' . $result . ')');
         } else {
+            $response->setHeader('Content-Type', 'application/json');
             $response->setBody($result);
         }
 
