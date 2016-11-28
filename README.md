@@ -100,6 +100,14 @@
  
 ## 功能介绍
 
+## Bootstrap
+
+在这里可以做一些初始化要加载的工作, 比如加载配置、插件、数据库、事件, 也可以结合composer加载第三方package。
+
+## 插件
+
+可以自己写一些插件来满足业务需要, 最后通过bootstrap来调用完成。
+
 ### 路由
 
 分三种路由,其中静态路由是默认路由,也是常用路由模式,如果需要其他特殊处理可以使用正则或Rewrite模式。
@@ -149,7 +157,9 @@
  
  ```
 
-### 视图view
+### 视图
+
+默认在`application/views`下,如果是多模块则放到对应的modules下的views里
 
 ### 校验
 
@@ -188,6 +198,10 @@
         throw new \Exception('param error', Code::PARAMS_ERROR);
     }
 ```
+
+## Loader
+
+可以加载本地类库,默认在`application/library`里, 也可以在`conf/application.ini`或php.ini的yaf配置里指定。
 
 ### 异常和错误
 
