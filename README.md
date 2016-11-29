@@ -85,17 +85,17 @@
 ├── conf                                    // 配置目录
 │   ├── application.ini
 │   ├── application.ini.example
-│   └── routes.php
+│   └── routes.php                          // 通过bootstrap加载
 ├── public
 │   ├── favicon.ico
-│   ├── index.php
+│   ├── index.php                           // 单入口文件
 │   └── assets
 │       ├── css
 │       ├── img
 │       └── js
 └── storage
-    ├── cache
-    └── logs
+    ├── cache                               // 缓存目录
+    └── logs                                // 日志目录
 ```
  
 ## 功能介绍
