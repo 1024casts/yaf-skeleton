@@ -100,11 +100,11 @@
  
 ## 功能介绍
 
-## Bootstrap
+### Bootstrap
 
 在这里可以做一些初始化要加载的工作, 比如加载配置、插件、数据库、事件, 也可以结合composer加载第三方package。
 
-## 插件
+### 插件
 
 可以自己写一些插件来满足业务需要, 最后通过bootstrap来调用完成。
 
@@ -199,9 +199,24 @@
     }
 ```
 
-## Loader
+### Loader
 
 可以加载本地类库,默认在`application/library`里, 也可以在`conf/application.ini`或php.ini的yaf配置里指定。
+
+### 日志
+
+日志使用比较简单,在需要记录日志的电饭锅加入以下代码:
+```php
+use Core\Log;
+
+Log::info('日志标识', ['param1' => $param1, 'param2' => $param2,...]);
+```
+看后在命令行下可以查看:
+```shell
+tail -f storage/logs/2016-11-29.log
+```
+
+PS: 依赖`monolog`
 
 ### 异常和错误
 
