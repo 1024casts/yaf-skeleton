@@ -199,7 +199,7 @@
     }
 ```
 
-### Loader
+### 自动加载
 
 可以加载本地类库,默认在`application/library`里, 也可以在`conf/application.ini`或php.ini的yaf配置里指定。
 
