@@ -216,7 +216,7 @@ Log::info('日志标识', ['param1' => $param1, 'param2' => $param2,...]);
 tail -f storage/logs/2016-11-29.log
 ```
 
-PS: 依赖`monolog`
+PS: 依赖`monolog` package
 
 ### 异常和错误
 
@@ -226,10 +226,10 @@ PS: 依赖`monolog`
 
 ## yaf 中文手册
 
- - http://php.net/manual/zh/book.yaf.php
+ - http://php.net/manual/zh/book.yaf.php **推荐** 
  - http://www.laruence.com/manual/index.html
  
-## 参考：
+## 参考
 - http://www.laruence.com/manual/
 - https://github.com/qieangel2013/yaf  db类
 - https://github.com/melonwool/YafUse PDO不错，也支持读写分离
