@@ -1,0 +1,22 @@
+<?php $this->extend('../layout') ?>
+
+<?php $this->block->begin('title', 'append')?>
+ - 我是前端
+<?php $this->block->end('title')?>
+
+<?php $this->block->begin('style') ?>
+<link type="text/css" rel="stylesheet" href="/css/index.css"/>
+<?php $this->block->end('style') ?>
+
+<?php $this->block->begin('header') ?>
+我是新header
+<?php $this->block->end('header') ?>
+
+<?php $this->block->begin('content') ?>
+我是content
+<?=$message?>
+<?php $this->block->end('content') ?>
+
+<?php $this->block->begin('script', 'append') ?>
+
+<?php $this->block->end('script') ?>

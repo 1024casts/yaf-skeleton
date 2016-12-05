@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><?php $this->block->begin('title')?>前端页面<?php $this->block->end('title')?></title>
+    <?php $this->block->begin('head') ?><?php $this->block->end('head') ?>
+    <?php $this->block->begin('style') ?><?php $this->block->end('style') ?>
+</head>
+<body>
+<?php $this->block->begin('header') ?>
+<!-- here header -->
+<?php $this->block->end('header') ?>
+<?php $this->block->begin('content') ?>
+<!-- here content -->
+<?php $this->block->end('content') ?>
+
+<?php $this->block->begin('footer') ?>
+<!-- here footer -->
+<?php $this->block->end('footer') ?>
+
+<?php $this->block->begin('script') ?>
+<script type="text/javascript" src="<?=$assets?>/js/jquery-1.8.2.min.js"></script>
+<?php $this->block->end('script') ?>
+</body>
+</html>
