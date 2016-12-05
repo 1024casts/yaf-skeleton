@@ -1,15 +1,21 @@
 [common]
-application.directory   = APP_PATH
-application.modules     = Home,Admin,Api
-application.dispatcher.defaultRoute = static
-application.dispatcher.catchException = 0
+application.directory   = APP_PATH  ;应用程序的目录，包含"controllers", "views", "models", "plugins"等子目录。
+application.modules     = Home,Admin,Api    ;允许模块名称
+application.dispatcher.defaultRoute = static    ;默认路由，如果未指定，静态路由会被当做是默认路由，参见： Yaf\Router::addRoute()。
+application.dispatcher.catchException = 0   ;在application.dispatcher.throwException开启的状态下, 是否启用默认捕获异常机制,默认关闭状态。开启此项，如果有未捕获的异常，Yaf将会把它定向到Error controller, Error Action。参见 Yaf_Dispatcher::cat
+                                            chException()。
+application.dispatcher.throwException = 0 ;切换在Yaf出错的时候抛出异常, 还是触发错误.默认的是开启状态.开启此项，Yaf会在发生错误的地方抛出异常。参见 Yaf\Dispatcher::throwException()。
 
 ; Layout
-application.library = APP_PATH "/library"
+application.library = APP_PATH "/library"   ;本地库路径
+;application.library.directory = APP_PATH "/library" ;本地库路径
+;application.library.namespace = “Core,Base” ;开启本地命名空间前缀,逗号分隔的本地类库命名空间前缀。
+;application.bootstrap = APP_PATH . "/Bootstrap" . application.ext ;Bootstrap类脚本文件的绝对路径。
 application.layoutpath = APP_PATH "/views/"
 application.document = "layout.phtml"
 application.cache_config = 0
-application.view.ext = "phtml"
+application.view.ext = "phtml"  ;视图模板扩展名。
+;application.ext="php" ;PHP脚本的扩展名，类的自动加载需要用到它( Yaf\Loader)。
 
 ; App
 ;application.baseUri = ''
@@ -20,6 +26,8 @@ application.dispatcher.defaultAction = index
 [product : common]
 application.showErrors = 0
 application.throwException = 0
+application.dispatcher.catchException = 0
+application.dispatcher.throwException = 0
 log.type = syslog
 log.host = 192.168.1.1
 loh.port = 5141
@@ -29,6 +37,8 @@ loh.port = 5141
 ;errors (see Bootstrap::initErrors)
 application.showErrors = 0
 application.throwException = 0
+application.dispatcher.catchException = 0
+application.dispatcher.throwException = 0
 
 ; 开发环境
 [develop : common]
@@ -36,27 +46,23 @@ application.debug = 1
 ;errors (see Bootstrap::initErrors)
 application.showErrors = 1
 application.throwException = 1
+application.dispatcher.catchException = 1
+application.dispatcher.throwException = 1
 
 ; queue
 queue.type = redis
 queue.name = default
 queue.redis = default
+queue.keyname = queues:default
 
 ; cache
-cache.type = memcached
-;cache.redis = default
-
-; Memcached
-memcached.0.host    = 127.0.0.1
-memcached.0.port    = 11211
-memcached.0.weight  = 50
-memcached.1.host    = 127.0.0.1
-memcached.1.port    = 11211
-memcached.1.weight  = 5
+cache.type = redis
+cache.redis = default
 
 ; Redis
-redis.default.host = 127.0.0.1
+redis.default.host = 192.168.0.241
 redis.default.port = 6379
+redis.default.timeout = 30
 
 ; Database Read-Write
 db.default.driver     = mysql
@@ -86,9 +92,3 @@ log.channel = business
 log.file.dir = APP_ROOT "/storage/logs"
 ; log.syslog.host = 127.0.0.1
 ; log.syslog.port = 9999
-
-; upload
-; maxSize 3M
-upload.config.maxSize   = 3145728
-upload.config.rootPath  = APP_ROOT "/public/uploads"
-upload.config.savePath  = "/documents/"
