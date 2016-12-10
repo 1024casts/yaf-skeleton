@@ -158,6 +158,10 @@
  
  ```
 
+### ORM
+
+集成 `Laravel`的`Eloquent`的ORM, `Eloquent` 比较强大也比较好用,玩够一个足矣。 
+
 ### 视图
 
 默认在`application/views`下,如果是多模块则放到对应的modules下的views里
