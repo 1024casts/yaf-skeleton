@@ -161,6 +161,7 @@
 ### ORM
 
 集成 `Laravel`的`Eloquent`的ORM, `Eloquent` 比较强大也比较好用,玩够一个足矣。 
+[详细介绍](https://laravel.com/docs/5.3/eloquent)
 
 ### 视图
 
