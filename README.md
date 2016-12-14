@@ -213,6 +213,15 @@
 
 可以自己写一些插件来满足业务需要, 最后通过bootstrap来调用完成。
 
+### 脚本
+
+脚本一般放在 `application/modules/Console/controllers` 目录下, 写法和其他模块的写法一致。
+
+使用:
+```
+php bin/run Test/test   // Test 控制器下的test action
+```
+
 ### 日志
 
 日志使用比较简单,在需要记录日志的电饭锅加入以下代码:
