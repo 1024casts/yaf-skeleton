@@ -165,7 +165,9 @@
 
 ### 视图
 
-默认在`application/views`下,如果是多模块则放到对应的modules下的views里
+默认在`application/views`下, 如果是多模块则放到对应的modules下的views里。
+也可以通过`Composer`加载 `Laravel`的`Blade`或者 `Symfony`的`Twig`模板引擎,
+当然需要在Bootstrap里初始化加载一下
 
 ### 校验
 
