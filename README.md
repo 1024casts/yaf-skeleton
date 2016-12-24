@@ -154,6 +154,16 @@
              'action' => 'detail',
          ],
      ],
+     或
+     'news' => [
+          'type' => 'rewrite',
+          'match' => 'resource/:c/:a/:id/',
+          'route' => [
+              'module' => 'Home',
+              'controller' => 'news',
+              'action' => 'detail',
+          ],
+      ],
  ];
  
  ```
