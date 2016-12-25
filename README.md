@@ -78,7 +78,7 @@
 │       └── index
 │           ├── index.phtml
 │           └── tpl.phtml
-├── bin
+├── console
 │   └── run.php
 ├── composer.json
 ├── composer.lock
@@ -227,11 +227,11 @@
 
 ### 脚本
 
-脚本一般放在 `application/modules/Console/controllers` 目录下, 写法和其他模块的写法一致。
+脚本一般放在 `application/modules/Console/controllers` 目录下, 写法和其他模块里`controller`的写法一致。
 
 使用:
 ```
-php bin/run Test/test   // Test 控制器下的test action
+php console/run Test/test   // Test 控制器下的test action
 ```
 
 ### 日志
