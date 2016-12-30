@@ -257,7 +257,7 @@ PS: 依赖`monolog` package
 
 ### 依赖注入
 
-### 事件管理&监听
+### 事件管理(Event)&监听(Listener)
 
 ## yaf 中文手册
 
