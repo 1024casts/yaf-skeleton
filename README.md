@@ -255,9 +255,9 @@ PS: 依赖`monolog` package
 当Yaf遇到未捕获异常的时候, 就会把运行权限, 交给当前模块的Error Controller的Error Action动作, 而异常或作为请求的一个参数, 传递给Error Action.
 错误页默认在`application/views/error/error.phtml`, 可以进行自定义处理。
 
-### 依赖注入
+### 依赖注入(Dependency injection)
 
-### 事件管理(Event)&监听(Listener)
+### 事件管理(EventManager) & 监听(Listener)
 
 ## yaf 中文手册
 
