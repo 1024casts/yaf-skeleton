@@ -14,6 +14,7 @@
 - 默认情况下 `controllers`,`views`,`modules`,`library`,`models`,`plugins` 是在根 namespace
 - service是目录 namespace 是配置在 `App\Services` 下,详见 `composer.json`
 - 第三方类库使用composer安装
+- 开发规范遵循 `PSR2`, `PSR4`规范
 
 ## 目录结构
 
