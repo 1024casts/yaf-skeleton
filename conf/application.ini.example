@@ -1,6 +1,6 @@
 [common]
 application.directory   = APP_PATH  ;应用程序的目录，包含"controllers", "views", "models", "plugins"等子目录。
-application.modules     = Home,Admin,Api    ;允许模块名称
+application.modules     = Index,Home,Admin,Api    ;允许模块名称
 application.dispatcher.defaultRoute = static    ;默认路由，如果未指定，静态路由会被当做是默认路由，参见： Yaf\Router::addRoute()。
 application.dispatcher.catchException = 0   ;在application.dispatcher.throwException开启的状态下, 是否启用默认捕获异常机制,默认关闭状态。开启此项，如果有未捕获的异常，Yaf将会把它定向到Error controller, Error Action。参见 Yaf_Dispatcher::cat
                                             chException()。
@@ -60,7 +60,7 @@ cache.type = redis
 cache.redis = default
 
 ; Redis
-redis.default.host = 192.168.0.241
+redis.default.host = 192.168.0.1
 redis.default.port = 6379
 redis.default.timeout = 30
 

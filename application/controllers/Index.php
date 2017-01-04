@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
-use Support\Log;
+use Core\Log;
+use Yaf\Request\Http;
 
-class IndexController extends AbstractApi
+class IndexController extends Core\Controllers\Web
 {
     /**
      * 初始化由yaf自动调用
@@ -17,20 +17,18 @@ class IndexController extends AbstractApi
     public function indexAction()
     {
         // 获取
-        $user = User::find(47);
-
-        //$httpClent = new Http();
-        //$httpClent->get('https://api.github.com/users/qloog/repos');
-        Log::info('file nums:', get_included_files());
-        $this->successJson($user);
-
+        $user = UserModel::find(1);
+        echo $user->toJson();
     }
 
+    /**
+     * 使用 Eloquent ORM
+     */
     public function mysqlAction()
     {
-        $client = new test();
-        $user = $client->find(41);
-        dd($user); // dd 放到
+        // 获取
+        $user = UserModel::find(1);
+        echo $user->toJson();
     }
 
     public function pdoAction()

@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Models;
-
-use Core\Databases\Model;
+use Core\Databases\RelationDb as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Model
+class UserModel extends Model
 {
     // 软删除
     use SoftDeletes;
@@ -17,5 +15,5 @@ class User extends Model
     protected $dates = ['deleted_at'];
 
     // 允许批量赋值的字段
-    protected $fillable = ['username', 'password', 'email'];
+    protected $fillable = ['name', 'password', 'email'];
 }
