@@ -108,7 +108,9 @@
 
 ### Bootstrap
 
-在这里可以做一些初始化要加载的工作, 比如加载配置、插件、数据库、事件, 也可以结合composer加载第三方package。
+Bootstrap 有两部分:  
+ - 1、`application`目录下有一个总的`Bootstrap.php`文件,这里可以加载全局需要用到的`ORM`,`Plugins`,`Composer`,`Route`,`Config`等等。
+ - 2、`application/modules`目录下各个module里也可以定义各自的`Bootstrap.php`, 在这里可以做一些当前模块的全局处理,比如检查用户是否登录。
 
 ### 路由
 
@@ -224,7 +226,7 @@
 
 ### 插件
 
-可以自己写一些插件来满足业务需要, 最后通过bootstrap来调用完成。
+可以自己写一些插件来满足业务需要, 最后通过`application`下的`Bootstrap.php`里的`_initPlugin`来调用。
 
 ### 脚本
 

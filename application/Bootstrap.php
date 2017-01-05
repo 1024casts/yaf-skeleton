@@ -38,6 +38,7 @@ class Bootstrap extends Bootstrap_Abstract
      */
     public function _initPlugin(Dispatcher $dispatcher)
     {
+        $dispatcher->registerPlugin(new InitPlugin());
         //$dispatcher->registerPlugin(new XHProfPlugin());
     }
 
