@@ -278,7 +278,7 @@ PS: 依赖`monolog` package
 - http://www.open-open.com/lib/view/open1414396586434.html
 - http://blog.csdn.net/treesky/article/details/50521437
 - http://unixera.com/php/Yaf-yet-another-manual-for-human/
-- https://github.com/xudianyang/yaf.app
+- https://github.com/xudianyang/yaf.app 推荐阅读（含XHProf, 队列:php-resque）
 - https://github.com/loncool/yaf-admin
 - https://github.com/justmd5/yaf-twig-adapter 支持多模块配置
 - https://github.com/mlboy/yaflib

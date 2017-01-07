@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @name SamplePlugin
  * @desc   Yaf定义了如下的6个Hook,插件之间的执行顺序是先进先Call
