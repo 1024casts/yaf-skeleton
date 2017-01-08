@@ -12,8 +12,8 @@
 
 - 配置环境 开发环境: `yaf.environ = develop` , 生产环境: `yaf.environ = production`
 - 默认情况下 `controllers`,`views`,`modules`,`library`,`models`,`plugins` 是在根 namespace
-- service目录的namespace 是配置在 `App\Services` 下,详见 `composer.json`
-- 第三方类库使用composer安装
+- service目录的namespace 是配置在 `App\Services` 下,需在 `composer.json`的`autoload`下的`psr-4`配置
+- 第三方类库使用Composer安装
 - 开发规范遵循 `PSR2`, `PSR4`规范
 
 ## 目录结构
