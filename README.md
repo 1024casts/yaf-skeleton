@@ -260,6 +260,8 @@ PS: 依赖`monolog` package
 
 ### 依赖注入(Dependency injection)
 
+DI
+
 ### 事件管理(EventManager) & 监听(Listener)
 
 ### 单元测试
