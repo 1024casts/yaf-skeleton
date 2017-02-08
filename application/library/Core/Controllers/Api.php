@@ -20,6 +20,8 @@ class Api extends Base
      */
     public function init()
     {
+        // 在controller或service里new throw之后,这里会进行捕获
+        // 比如参数检查,用户登录检查抛异常之后,最后还会以类似调用$this->error()的方式返回json。
         set_exception_handler([$this, 'handleException']);
 
         parent::init();
