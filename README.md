@@ -260,7 +260,7 @@ PS: 依赖`monolog` package
 
 ### 依赖注入(Dependency injection)
 
-DI
+DI 一般通过contructor来注入（依赖注入的一种方式）
 
 ### 事件管理(EventManager) & 监听(Listener)
 

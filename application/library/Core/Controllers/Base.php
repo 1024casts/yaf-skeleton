@@ -1,10 +1,10 @@
 <?php
+
 namespace Core\Controllers;
 
 use Yaf\Controller_Abstract;
 use Yaf\Dispatcher;
 use Yaf\Registry;
-use Yaf\Session;
 
 /**
  * 基础控制器,所有控制器都应该实现此类
