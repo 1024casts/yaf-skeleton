@@ -108,8 +108,7 @@
 
 ### Bootstrap
 
-Bootstrap 有两部分:  
- - 1、`application`目录下有一个总的`Bootstrap.php`文件,这里可以加载全局需要用到的`ORM`,`Plugins`,`Composer`,`Route`,`Config`等等。
+ - 1、`application`目录下有一个总的`Bootstrap.php`文件,这里可以加载全局需要用到的`ORM`,`Plugins`,`Composer`,`Route`,`Config`等等, 此文件是默认存在的。
  - 2、`application/modules`目录下各个module里也可以定义各自的`Bootstrap.php`, 在这里可以做一些当前模块的全局处理,比如检查用户是否登录。
 
 ### 路由
