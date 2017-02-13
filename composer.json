@@ -4,7 +4,7 @@
     "keywords": ["api", "yaf"],
     "license": "MIT",
     "type": "project",
-        "minimum-stability": "dev",
+    "minimum-stability": "dev",
     "require": {
         "monolog/monolog": "^1.13",
         "illuminate/database": "5.0.*",
@@ -13,7 +13,8 @@
         "symfony/debug": "2.7.*",
         "symfony/var-dumper": "2.7.*",
         "guzzlehttp/guzzle": "^6.2",
-        "twig/twig": "^1.24"
+        "twig/twig": "^1.24",
+        "pimple/pimple": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.7.3",
