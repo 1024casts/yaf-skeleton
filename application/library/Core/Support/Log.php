@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\Support;
 
 use Psr\Log\LoggerInterface;
 use Yaf\Registry;

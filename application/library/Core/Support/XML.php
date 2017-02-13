@@ -1,6 +1,6 @@
 <?php
 
-namespace Support;
+namespace Core\Support;
 
 /**
  * Class XML.
