@@ -170,6 +170,15 @@
  
  ```
 
+### 控制器 Controller
+
+命名规则: 第一个字母大写,紧跟后面的必须小写。class名称同文件名。
+
+```
+错误: LiveStream.php
+正确: Livestream.php
+```
+
 ### ORM
 
 集成 `Laravel`的`Eloquent`的ORM, `Eloquent` 比较强大也比较好用,玩够一个足矣。 
