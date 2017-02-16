@@ -174,6 +174,8 @@
 
 命名规则: 第一个字母大写,紧跟后面的必须小写。class名称同文件名。
 
+支持JSONP返回,只需要在get url时传入 _callback即可。
+
 ```
 错误: LiveStream.php
 正确: Livestream.php
