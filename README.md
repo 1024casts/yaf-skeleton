@@ -270,7 +270,7 @@ PS: 依赖`monolog` package
 
 ### 依赖注入(Dependency injection)
 
-DI 一般通过contructor来注入（依赖注入的一种方式）
+DI 一般通过contructor来注入（依赖注入的一种方式), 补充注入过程
 
 @todo 增加demo
 
