@@ -14,6 +14,7 @@ use Yaf\Registry;
 use Yaf\Loader;
 use Yaf\Dispatcher;
 use Yaf\Application;
+use Core\Di\Container;
 use Illuminate\Events\Dispatcher as LDispatcher;
 use Illuminate\Container\Container as LContainer;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -74,6 +75,51 @@ class Bootstrap extends Bootstrap_Abstract
 
         $config = require(APP_ROOT . '/conf/routes.php');
         $dispatcher->getRouter()->addConfig($config);
+    }
+
+    /**
+     * 初始化依赖注入services
+     */
+    public function _initServices()
+    {
+        $services = [];
+        if (file_exists($basicService = APP_CONFIG_PATH . '/di.php') && is_readable($basicService)) {
+            $services = require $basicService;
+        }
+
+        $env = Application::app()->environ();
+        if (file_exists($envService = APP_CONFIG_PATH . '/' . $env . '/di.php') && is_readable($envService)) {
+            $services = array_merge($services, require $envService);
+        }
+
+        Registry::set('di', new Container($services));
+    }
+
+    /**
+     * 初始化全局事件监听
+     */
+    public function _initListener()
+    {
+        $listeners = [];
+        if (file_exists($basicListener = APP_CONFIG_PATH . '/listener.php')) {
+            $listeners = require $basicListener;
+        }
+
+        $env = Application::app()->environ();
+        if (file_exists($envListener = APP_CONFIG_PATH . '/' . $env . '/listener.php') && is_readable($envListener)) {
+            $listeners = array_merge($listeners, require $envListener);
+        }
+
+        $em = Registry::get('di')->get('eventsManager');
+        foreach ($listeners as $event => $handler) {
+            if (is_array($handler)) {
+                foreach ($handler as $h) {
+                    $em->attach($event, $h);
+                }
+            } else {
+                $em->attach($event, $handler);
+            }
+        }
     }
 
     /**
