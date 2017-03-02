@@ -34,12 +34,24 @@ class Bootstrap extends Bootstrap_Abstract
     }
 
     /**
+     * 初始化Loader
+     */
+    public function _initLoader()
+    {
+        $loader = Loader::getInstance();
+
+        $autoload = APP_ROOT . '/vendor/autoload.php';
+        if (file_exists($autoload)) {
+            $loader->import($autoload);
+        }
+    }
+
+    /**
      * @param Dispatcher $dispatcher
      */
     public function _initPlugin(Dispatcher $dispatcher)
     {
-        $dispatcher->registerPlugin(new InitPlugin());
-        //$dispatcher->registerPlugin(new XHProfPlugin());
+        $dispatcher->registerPlugin(new ModuleBootstrapPlugin());
     }
 
     /**
@@ -62,21 +74,6 @@ class Bootstrap extends Bootstrap_Abstract
 
         $config = require(APP_ROOT . '/conf/routes.php');
         $dispatcher->getRouter()->addConfig($config);
-    }
-
-    /**
-     * 初始化 composer autoload
-     *
-     * @param Yaf\Dispatcher $dispatcher
-     */
-    public function _initComposerAutoload(Dispatcher $dispatcher)
-    {
-        $loader = Loader::getInstance();
-
-        $autoload = APP_ROOT . '/vendor/autoload.php';
-        if (file_exists($autoload)) {
-            $loader->import($autoload);
-        }
     }
 
     /**
