@@ -1,6 +1,6 @@
 <?php
 
-use Core\Controllers\Web;
+use Core\Mvc\Controller\Web;
 use App\Services\UserService;
 
 /**

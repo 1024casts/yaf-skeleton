@@ -1,7 +1,6 @@
 <?php
 
-namespace Core\Controllers;
-
+namespace Core\Mvc\Controller;
 
 use Core\Exceptions\RuntimeException;
 use Core\Views\View;

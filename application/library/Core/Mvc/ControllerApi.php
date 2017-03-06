@@ -1,8 +1,9 @@
 <?php
+
 namespace Core\Mvc;
 
 use Core\Di\InjectionWareInterface;
-use Core\Controllers\Api as CoreApi;
+use Core\Mvc\Controller\Api as CoreApi;
 use Core\Di\InjectionWareTrait;
 use Core\Events\ManagerWareTrait;
 
