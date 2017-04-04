@@ -268,6 +268,8 @@ PS: 依赖`monolog` package
 当Yaf遇到未捕获异常的时候, 就会把运行权限, 交给当前模块的Error Controller的Error Action动作, 而异常或作为请求的一个参数, 传递给Error Action.
 错误页默认在`application/views/error/error.phtml`, 可以进行自定义处理。
 
+>  [我们什么时候应该使用异常?](http://www.laruence.com/2012/02/02/2515.html)
+
 ### 依赖注入(Dependency injection)
 
 DI 一般通过contructor来注入（依赖注入的一种方式), 补充注入过程

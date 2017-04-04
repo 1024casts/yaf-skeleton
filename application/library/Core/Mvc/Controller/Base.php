@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Controllers;
+namespace Core\Mvc\Controller;
 
 use Yaf\Controller_Abstract;
 use Yaf\Dispatcher;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Core\Mvc;
 
 use Core\Di\InjectionWareInterface;
