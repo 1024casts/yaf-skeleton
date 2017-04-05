@@ -79,8 +79,9 @@
 │       └── index
 │           ├── index.phtml
 │           └── tpl.phtml
-├── console
-│   └── run.php
+├── bin
+│   ├── console
+│   └── run
 ├── composer.json
 ├── composer.lock
 ├── conf                                    // 配置目录
@@ -244,7 +245,7 @@
 
 使用:
 ```
-php console/run Test/test   // Test 控制器下的test action
+php bin/run Test/test   // Test 控制器下的test action
 ```
 
 ### 日志
