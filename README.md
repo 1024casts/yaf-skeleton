@@ -4,7 +4,11 @@
 
 ## 安装
 
-`composer create-project phpcasts/yaf-skeleton yaf-demo dev-master`
+`composer create-project phpcasts/yaf-skeleton yaf-demo dev-master -vvv`
+
+加速版：
+
+`composer create-project phpcasts/yaf-skeleton yaf-demo dev-master --repository-url https://packagist.phpcomposer.com -vvv`
 
 ## Required
 
