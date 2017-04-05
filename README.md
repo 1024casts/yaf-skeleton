@@ -2,11 +2,16 @@
 
 常用功能和一些的类库
 
+## 安装
+
+`composer create-project composer require phpcasts/yaf-skeleton yaf-demo dev-master`
+
 ## Required
 
 - 安装YAF扩展 [yaf安装](http://php.net/manual/zh/yaf.installation.php)
-- php.ini 配置: 开启命名空间 `yaf.use_namespace = 1`
+- php.ini 配置: 开启命名空间 `yaf.use_namespace = true`
 - 使用命名空间引入需要的文件
+- composer
  
 ## 说明
 
