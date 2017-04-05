@@ -1,7 +1,7 @@
 {
-    "name": "qloog/yaf-skeleton",
-    "description": "yaf-api",
-    "keywords": ["api", "yaf"],
+    "name": "phpcasts/yaf-skeleton",
+    "description": "yaf-skeleton",
+    "keywords": ["yaf-skeleton","yaf","skeleton"],
     "license": "MIT",
     "type": "project",
     "minimum-stability": "dev",
