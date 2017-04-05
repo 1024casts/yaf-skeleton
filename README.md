@@ -4,7 +4,7 @@
 
 ## 安装
 
-`composer create-project composer require phpcasts/yaf-skeleton yaf-demo dev-master`
+`composer create-project require phpcasts/yaf-skeleton yaf-demo dev-master`
 
 ## Required
 
