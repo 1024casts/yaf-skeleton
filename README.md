@@ -25,7 +25,7 @@ php -S localhost:8080 public/index.php
 open localhost:8080
 ```
 
-应该就可以看到 `Hello World!` 了，有兴趣的同学可以继续看后台的大概介绍。
+应该就可以看到 `Hello World!` 了，有兴趣的同学可以继续看后面的大概介绍。
  
 ## 说明
 
