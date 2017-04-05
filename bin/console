@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+define('APP_ROOT', dirname(__DIR__));
+define('APP_PATH', dirname(__FILE__) . '/Application');
+require APP_ROOT . '/vendor/autoload.php';
+
+use PHPCasts\GenerateController;
+use PHPCasts\GenerateModel;
+use PHPCasts\GeneratePlugin;
+use PHPCasts\Check;
+use Symfony\Component\Console\Application;
+
+$application = new Application();
+
+// ... register commands
+$application->add(new GenerateController());
+$application->add(new GenerateModel());
+$application->add(new GeneratePlugin());
+$application->add(new Check());
+
+$application->run();

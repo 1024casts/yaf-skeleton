@@ -284,6 +284,15 @@ DI 一般通过contructor来注入（依赖注入的一种方式), 补充注入�
 
 PHPUnit
 
+## 命令行工具
+
+```
+php bin/console  // 查看可用命令
+php bin/console make:controller Articles	// 创建控制器
+php bin/console make:model Articles // 创建模型
+php bin/console make:plugin Test	// 创建插件
+```
+
 ## yaf 中文手册
 
  - http://php.net/manual/zh/book.yaf.php **推荐** 

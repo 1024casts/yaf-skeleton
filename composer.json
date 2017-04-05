@@ -7,19 +7,12 @@
     "minimum-stability": "dev",
     "require": {
         "monolog/monolog": "^1.13",
-        "illuminate/database": "5.0.*",
-        "illuminate/events": "5.0.*",
-        "symfony/console": "2.7.*",
-        "symfony/debug": "2.7.*",
-        "symfony/var-dumper": "2.7.*",
         "guzzlehttp/guzzle": "^6.2",
-        "twig/twig": "^1.24",
         "pimple/pimple": "^3.0",
-        "qloog/yaf-console": "dev-master"
+        "phpcasts/yaf-console": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.7.3",
-        "phpspec/phpspec": "2.2.1"
+        "phpunit/phpunit": "4.7.3"
     },
     "autoload": {
         "psr-4": {
@@ -28,5 +21,11 @@
         "files": [
             "application/library/helpers.php"
         ]
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
     }
 }
