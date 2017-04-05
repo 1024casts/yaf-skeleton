@@ -145,13 +145,13 @@ class Bootstrap extends Bootstrap_Abstract
      *
      * @param Dispatcher|\Yaf\Dispatcher $dispatcher
      */
-    public function _initDefaultDbAdapter(Dispatcher $dispatcher)
-    {
-        $capsule = new Capsule();
-        $db = $this->config['database'];
-        $capsule->addConnection($db);
-        $capsule->setEventDispatcher(new LDispatcher(new LContainer));
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
-    }
+    //public function _initDefaultDbAdapter(Dispatcher $dispatcher)
+    //{
+    //    $capsule = new Capsule();
+    //    $db = $this->config['database'];
+    //    $capsule->addConnection($db);
+    //    $capsule->setEventDispatcher(new LDispatcher(new LContainer));
+    //    $capsule->setAsGlobal();
+    //    $capsule->bootEloquent();
+    //}
 }

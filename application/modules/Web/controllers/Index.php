@@ -1,6 +1,8 @@
 <?php
 
-class IndexController extends BaseController
+use Core\Mvc\Controller\Web;
+
+class IndexController extends Web
 {
 
     /**
@@ -8,7 +10,7 @@ class IndexController extends BaseController
      *
      * @var array
      */
-    protected static $ignoreUserAuth = ['test'];
+    protected static $ignoreUserAuth = ['test','index'];
 
     /**
      * 首页
@@ -17,15 +19,15 @@ class IndexController extends BaseController
      */
     public function indexAction()
     {
+        return $this->display('hello');
+    }
+
+    public function testAction()
+    {
         $data = [
             'message' => 'test message'
         ];
 
         return $this->display('index', $data);
-    }
-
-    public function testAction()
-    {
-
     }
 }

@@ -4,6 +4,7 @@ namespace Core\Mvc\Controller;
 
 use Core\Exceptions\RuntimeException;
 use Core\Views\View;
+use App\Services\User as UserService;
 
 /**
  * Web相关的基础控制器
@@ -11,11 +12,20 @@ use Core\Views\View;
 class Web extends Base
 {
     /**
+     * 当前登录的用户信息
+     *
+     * @var array
+     */
+    protected $loginUser = [];
+
+    /**
      * 初始化
      */
     public function init()
     {
         parent::init();
+
+        $this->loginUser = (new UserService)->getCurrentUserInfo();
 
         $viewPath = $this->_view->getScriptPath();
         if (!$viewPath) {
@@ -51,7 +61,10 @@ class Web extends Base
      */
     public function commonVars()
     {
-        return [];
+        return [
+            'assets' => '/',
+            'userInfo' => $this->loginUser,
+        ];
     }
 
     /**

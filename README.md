@@ -16,6 +16,16 @@
 - php.ini 配置: 开启命名空间 `yaf.use_namespace = true`
 - 使用命名空间引入需要的文件
 - composer
+
+## 运行
+
+```
+cd yaf-demo
+php -S localhost:8080 public/index.php
+open localhost:8080
+```
+
+应该就可以看到 `Hello World!` 了，有兴趣的同学可以继续看后台的大概介绍。
  
 ## 说明
 

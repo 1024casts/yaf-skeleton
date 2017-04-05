@@ -14,5 +14,6 @@ class User
      */
     public function getCurrentUserInfo()
     {
+        return [];
     }
 }

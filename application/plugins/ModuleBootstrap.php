@@ -17,6 +17,10 @@ class ModuleBootstrapPlugin extends Yaf\Plugin_Abstract
      */
     public function routerShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
+        if ($request->module == 'Index') {
+            $request->module = 'Web';
+        }
+
         $bootsFile = APP_PATH . '/modules/' . $request->module . '/Bootstrap.php';
         if (file_exists($bootsFile)) {
             Loader::import($bootsFile);
