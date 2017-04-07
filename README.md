@@ -19,7 +19,7 @@
 
 ## 运行
 
-```
+```shell
 cd yaf-demo
 php -S localhost:8080 public/index.php
 open localhost:8080
@@ -176,7 +176,7 @@ open localhost:8080
              'action' => 'detail',
          ],
      ],
-     或
+     // 或
      'news' => [
           'type' => 'rewrite',
           'match' => 'resource/:c/:a/:id/',
@@ -193,13 +193,11 @@ open localhost:8080
 ### 控制器 Controller
 
 命名规则: 第一个字母大写,紧跟后面的必须小写。class名称同文件名。
-
-支持JSONP返回,只需要在get url时传入 _callback即可。
-
 ```
 错误: LiveStream.php
 正确: Livestream.php
 ```
+同时支持JSONP返回,只需要在get url时传入 _callback即可。
 
 ### ORM
 
@@ -263,7 +261,7 @@ open localhost:8080
 脚本一般放在 `application/modules/Console/controllers` 目录下, 写法和其他模块里`controller`的写法一致。
 
 使用:
-```
+```php
 php bin/run Test/test   // Test 控制器下的test action
 ```
 
@@ -306,7 +304,7 @@ PHPUnit
 
 ## 命令行工具
 
-```
+```shell
 php bin/console  // 查看可用命令
 php bin/console make:controller Articles	// 创建控制器
 php bin/console make:model Articles // 创建模型
