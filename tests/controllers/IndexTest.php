@@ -1,9 +1,11 @@
 <?php
 
+use Core\Tests\PHPUnit\ControllerTestCase;
+
 /**
  * 首页控制器测试类
  */
-class IndexTest extends \Core\Tests\PHPUnit\ControllerTestCase
+class IndexTest extends ControllerTestCase
 {
     /**
      * 测试index方法

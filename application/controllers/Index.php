@@ -3,7 +3,7 @@
 use Core\Log;
 use Yaf\Request\Http;
 
-class IndexController extends Core\Controllers\Web
+class IndexController extends Core\Mvc\Controller\Web
 {
     /**
      * 初始化由yaf自动调用
@@ -16,9 +16,10 @@ class IndexController extends Core\Controllers\Web
 
     public function indexAction()
     {
-        // 获取
-        $user = UserModel::find(1);
-        echo $user->toJson();
+        //// 获取
+        //$user = UserModel::find(1);
+        //echo $user->toJson();
+        return 'index phtml';
     }
 
     /**

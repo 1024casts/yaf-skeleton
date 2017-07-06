@@ -7,7 +7,18 @@
     </testsuite>
 </testsuites>
 
+<filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">./controllers</directory>
+        <file>/path/to/file</file>
+        <exclude>
+            <directory suffix=".php">./models</directory>
+            <file>/path/to/file</file>
+        </exclude>
+    </whitelist>
+</filter>
+
 <logging>
-    <log type="coverage-html" target="report" charset="UTF-8"/>
+    <log type="coverage-html" target="/tmp/report" charset="UTF-8"/>
 </logging>
 </phpunit>
