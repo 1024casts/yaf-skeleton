@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./bootstrap.php">
     <testsuites>
-    <testsuite name="controller">
-        <file>controller/TestIndexController.php</file>
-        <file>controller/TestUserController.php</file>
-    </testsuite>
-</testsuites>
+        <testsuite name="controllers">
+            <directory>./controllers</directory>
 
-<filter>
-    <whitelist processUncoveredFilesFromWhitelist="true">
-        <directory suffix=".php">./controllers</directory>
-        <file>/path/to/file</file>
-        <exclude>
-            <directory suffix=".php">./models</directory>
-            <file>/path/to/file</file>
-        </exclude>
-    </whitelist>
-</filter>
+        </testsuite>
+    </testsuites>
 
-<logging>
-    <log type="coverage-html" target="/tmp/report" charset="UTF-8"/>
-</logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory>./controllers</directory>
+            <exclude>
+                <directory>./models</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="/tmp/report" charset="UTF-8"/>
+    </logging>
 </phpunit>

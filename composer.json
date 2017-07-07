@@ -19,7 +19,8 @@
     "autoload": {
         "psr-4": {
             "App\\Services\\": "application/services",
-            "App\\Defines\\": "application/defines"
+            "App\\Defines\\": "application/defines",
+            "App\\Tests\\": "tests"
         },
         "files": [
             "application/library/helpers.php"

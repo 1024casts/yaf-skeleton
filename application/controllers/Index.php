@@ -14,12 +14,12 @@ class IndexController extends Core\Mvc\Controller\Web
         parent::init();
     }
 
-    public function indexAction()
+    public function testAction()
     {
         //// 获取
         //$user = UserModel::find(1);
         //echo $user->toJson();
-        return 'index phtml';
+        $this->getResponse()->setBody('index');
     }
 
     /**
@@ -39,7 +39,7 @@ class IndexController extends Core\Mvc\Controller\Web
         dd($user); // dd 放到
     }
 
-    public function testAction()
+    public function test1Action()
     {
         //Dispatcher::getInstance()->disableView(0);
         //Dispatcher::getInstance()->disableView();
@@ -52,10 +52,5 @@ class IndexController extends Core\Mvc\Controller\Web
         );
         $data = $client->api();
         print_r($data);
-    }
-
-    public function getdataAction()
-    {
-        return json_encode(['code' => 200, 'data' => ['user_id' => 1, 'user_name' => 'test1']]);
     }
 }

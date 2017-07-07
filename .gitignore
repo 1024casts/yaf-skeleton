@@ -1,7 +1,4 @@
-
 vendor
-storage/caches/*
-storage/logs/*
-conf/application.ini
-
 .idea/
+/nbproject/*
+.DS*

@@ -28,7 +28,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function setApplication()
     {
-        $application = new \Yaf\Application(APPLICATION_PATH . "/conf/application.ini");
+        $application = new \Yaf\Application(APP_CONFIG_PATH . "/application.ini");
         $application->bootstrap();
         \Yaf\Registry::set('application', $application);
     }
