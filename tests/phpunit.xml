@@ -3,7 +3,6 @@
     <testsuites>
         <testsuite name="controllers">
             <directory>./controllers</directory>
-
         </testsuite>
     </testsuites>
 

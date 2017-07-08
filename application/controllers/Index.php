@@ -22,6 +22,20 @@ class IndexController extends Core\Mvc\Controller\Web
         $this->getResponse()->setBody('index');
     }
 
+    public function jsonAction()
+    {
+        $json = json_encode(['uid'=>1,'username'=>'admin']);
+        $this->getResponse()->setBody($json);
+    }
+
+    /**
+     * 此处会报php error, setBody参数必须是string
+     */
+    public function arrayAction()
+    {
+        //$this->getResponse()->setBody(['uid'=>1]);
+    }
+
     /**
      * 使用 Eloquent ORM
      */
