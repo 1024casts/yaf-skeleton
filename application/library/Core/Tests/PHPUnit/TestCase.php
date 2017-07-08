@@ -2,6 +2,9 @@
 
 namespace Core\Tests\PHPUnit;
 
+use Yaf\Application;
+use Yaf\Registry;
+
 /**
  * 测试基类
  */
@@ -10,7 +13,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     /**
      * yaf运行实例
      *
-     * @var \Yaf\Application
+     * @var Application
      */
     protected $_application = null;
 
@@ -28,23 +31,23 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function setApplication()
     {
-        $application = new \Yaf\Application(APP_CONFIG_PATH . "/application.ini");
+        $application = new Application(APP_CONFIG_PATH . "/application.ini");
         $application->bootstrap();
-        \Yaf\Registry::set('application', $application);
+        Registry::set('application', $application);
     }
 
     /**
      * 获取application
      *
-     * @return \Yaf\Application
+     * @return Application
      */
     public function getApplication()
     {
-        $application = \Yaf\Registry::get('application');
+        $application = Registry::get('application');
         if (!$application) {
             $this->setApplication();
         }
 
-        return \Yaf\Registry::get('application');
+        return Registry::get('application');
     }
 }
