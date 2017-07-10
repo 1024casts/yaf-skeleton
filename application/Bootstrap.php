@@ -75,6 +75,12 @@ class Bootstrap extends Bootstrap_Abstract
 
         $config = require(APP_ROOT . '/conf/routes.php');
         $dispatcher->getRouter()->addConfig($config);
+
+        // or
+        //$config = new \Yaf\Config\Ini(APP_PATH . '/conf/route.ini', 'common');
+        //if ($config->routes) {
+        //    $dispatcher->getRouter()->addConfig($config->routes);
+        //}
     }
 
     /**
