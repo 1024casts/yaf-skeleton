@@ -2,9 +2,10 @@
 
 namespace Core\Databases;
 
-use Illuminate\Database\Eloquent\Model as EloquentModel;
+//use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Core\Mvc\Model\Base as Model;
 
-class RelationDb extends EloquentModel
+class RelationDb extends Model
 {
     // todo
 }
