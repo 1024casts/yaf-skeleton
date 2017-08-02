@@ -5,6 +5,7 @@ define('APP_ROOT', dirname(__DIR__));
 define('APP_PATH', APP_ROOT . '/application');
 require APP_ROOT . '/vendor/autoload.php';
 
+use PHPCasts\GenerateModule;
 use PHPCasts\GenerateController;
 use PHPCasts\GenerateModel;
 use PHPCasts\GeneratePlugin;
@@ -14,6 +15,7 @@ use Symfony\Component\Console\Application;
 $application = new Application();
 
 // ... register commands
+$application->add(new GenerateModule());
 $application->add(new GenerateController());
 $application->add(new GenerateModel());
 $application->add(new GeneratePlugin());
