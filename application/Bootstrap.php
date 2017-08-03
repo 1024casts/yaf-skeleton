@@ -75,6 +75,12 @@ class Bootstrap extends Bootstrap_Abstract
 
         $config = require(APP_ROOT . '/conf/routes.php');
         $dispatcher->getRouter()->addConfig($config);
+
+        // or
+        //$config = new \Yaf\Config\Ini(APP_PATH . '/conf/route.ini', 'common');
+        //if ($config->routes) {
+        //    $dispatcher->getRouter()->addConfig($config->routes);
+        //}
     }
 
     /**
@@ -153,5 +159,11 @@ class Bootstrap extends Bootstrap_Abstract
         $capsule->setEventDispatcher(new LDispatcher(new LContainer));
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
+
+        // todo: 记录执行的sql
+        // see: https://github.com/JustPoet/eyaf
+        if (ini_get('yaf.environ') != 'production') {
+            $capsule->getConnection()->enableQueryLog();
+        }
     }
 }

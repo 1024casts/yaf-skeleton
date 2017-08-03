@@ -26,6 +26,7 @@ trait OutputTrait
     {
         $codes = $this->code;
         $code = $codes::SUCCESS;
+
         return $this->output($code, $this->codeMessage($code), $data);
     }
 

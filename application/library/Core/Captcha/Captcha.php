@@ -4,7 +4,12 @@ namespace Core\Captcha;
 
 /**
  * Class Captcha
+ *
  * @package Core\Captcha
+ * @example
+ * <pre>
+ *
+ * </pre>
  */
 class Captcha
 {

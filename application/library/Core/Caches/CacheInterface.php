@@ -19,7 +19,7 @@ interface CacheInterface
      * 批量读取缓存
      *
      * @param array $keys 要读取的缓存Key列表
-     * @return array Key到值的Map
+     * @return array|bool Key到值的Map
      */
     public function getMulti($keys);
 
@@ -38,7 +38,7 @@ interface CacheInterface
      *
      * @param array $data 要设置的缓存,键为缓存的Key
      * @param int $expire 有效期, 0为不过期
-     * @return array Key到值的Map
+     * @return array|bool Key到值的Map
      */
     public function setMulti($data, $expire = 0);
 

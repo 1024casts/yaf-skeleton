@@ -1,6 +1,6 @@
 # yaf-skeleton
 
-常用功能和一些的类库
+yaf 基本功能介绍（含常用类库）
 
 ## 安装
 
@@ -13,8 +13,7 @@
 ## Required
 
 - 安装YAF扩展 [yaf安装](http://php.net/manual/zh/yaf.installation.php)
-- php.ini 配置: 开启命名空间 `yaf.use_namespace = true`
-- 使用命名空间引入需要的文件
+- php.ini 配置: 开启命名空间和SPL自动加载 `yaf.use_namespace = true` 和 `yaf.use_spl_autoload = true`
 - composer
 
 ## 运行

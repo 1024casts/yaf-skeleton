@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./bootstrap.php">
+    <testsuites>
+        <testsuite name="controllers">
+            <directory>./controllers</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory>./controllers</directory>
+            <exclude>
+                <directory>./models</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="/tmp/report" charset="UTF-8"/>
+    </logging>
+</phpunit>

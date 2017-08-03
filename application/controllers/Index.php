@@ -3,7 +3,7 @@
 use Core\Log;
 use Yaf\Request\Http;
 
-class IndexController extends Core\Controllers\Web
+class IndexController extends Core\Mvc\Controller\Web
 {
     /**
      * 初始化由yaf自动调用
@@ -14,11 +14,26 @@ class IndexController extends Core\Controllers\Web
         parent::init();
     }
 
-    public function indexAction()
+    public function testAction()
     {
-        // 获取
-        $user = UserModel::find(1);
-        echo $user->toJson();
+        //// 获取
+        //$user = UserModel::find(1);
+        //echo $user->toJson();
+        $this->getResponse()->setBody('index');
+    }
+
+    public function jsonAction()
+    {
+        $json = json_encode(['uid'=>1,'username'=>'admin']);
+        $this->getResponse()->setBody($json);
+    }
+
+    /**
+     * 此处会报php error, setBody参数必须是string
+     */
+    public function arrayAction()
+    {
+        //$this->getResponse()->setBody(['uid'=>1]);
     }
 
     /**
@@ -38,7 +53,7 @@ class IndexController extends Core\Controllers\Web
         dd($user); // dd 放到
     }
 
-    public function testAction()
+    public function test1Action()
     {
         //Dispatcher::getInstance()->disableView(0);
         //Dispatcher::getInstance()->disableView();
@@ -51,10 +66,5 @@ class IndexController extends Core\Controllers\Web
         );
         $data = $client->api();
         print_r($data);
-    }
-
-    public function getdataAction()
-    {
-        return json_encode(['code' => 200, 'data' => ['user_id' => 1, 'user_name' => 'test1']]);
     }
 }
