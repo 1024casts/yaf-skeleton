@@ -21,6 +21,7 @@
 
 ```shell
 cd yaf-demo
+composer install -vvv
 php -S localhost:8080 public/index.php
 open localhost:8080
 ```
