@@ -20,6 +20,7 @@ yaf 基本功能介绍（含常用类库）
 
 ```shell
 cd yaf-demo
+composer install -vvv
 php -S localhost:8080 public/index.php
 open localhost:8080
 ```
