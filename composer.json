@@ -11,7 +11,7 @@
         "pimple/pimple": "^3.0",
         "illuminate/Database": "^5.4",
         "illuminate/events": "^5.4",
-        "phpcasts/yaf-console": "dev-master"
+        "phpcasts/yaf-library": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "4.7.3"
@@ -24,11 +24,5 @@
         "files": [
             "application/library/helpers.php"
         ]
-    },
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
     }
 }

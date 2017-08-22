@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd49a90a3282b5e5ec8c5095d032ac2f",
+    "content-hash": "c43ed18972ff2369685a331b536dc882",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -454,7 +454,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/illuminate/support/77d8719cb524652ab3a2df8aaf8bc5bc4513b674.zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/77d8719cb524652ab3a2df8aaf8bc5bc4513b674",
                 "reference": "77d8719cb524652ab3a2df8aaf8bc5bc4513b674",
                 "shasum": ""
             },
@@ -637,21 +637,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/qloog/yaf-console.git",
-                "reference": "820315c21323589cb6593f08918731edb3872d81"
+                "reference": "5f97b7d3f23342dd2041c07727283f297725abf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qloog/yaf-console/zipball/820315c21323589cb6593f08918731edb3872d81",
-                "reference": "820315c21323589cb6593f08918731edb3872d81",
+                "url": "https://api.github.com/repos/qloog/yaf-console/zipball/5f97b7d3f23342dd2041c07727283f297725abf6",
+                "reference": "5f97b7d3f23342dd2041c07727283f297725abf6",
                 "shasum": ""
             },
             "require": {
-                "symfony/console": "^3.2"
+                "symfony/console": "^3.2",
+                "symfony/process": "^3.2"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "PHPCasts\\": "src/"
+                    "PHPCasts\\Console\\": "src/",
+                    "Symfony\\Component\\Process\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -667,11 +669,52 @@
             "description": "make controller,model,plugin,view by this tool",
             "keywords": [
                 "yaf generator",
+                "yaf-command",
                 "yaf-console",
                 "yaf命令行工具",
                 "yaf组件生成器"
             ],
-            "time": "2017-08-02 08:48:26"
+            "time": "2017-08-21 14:55:43"
+        },
+        {
+            "name": "phpcasts/yaf-library",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qloog/yaf-library.git",
+                "reference": "25c51a20bbb55ce4df2b8eb50ba86847a6632519"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/qloog/yaf-library/zipball/25c51a20bbb55ce4df2b8eb50ba86847a6632519",
+                "reference": "25c51a20bbb55ce4df2b8eb50ba86847a6632519",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "^1.13",
+                "phpcasts/yaf-console": "dev-master",
+                "pimple/pimple": "^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPCasts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "yaf-library",
+            "keywords": [
+                "library",
+                "yaf",
+                "yaf-library"
+            ],
+            "time": "2017-08-04 08:39:38"
         },
         {
             "name": "pimple/pimple",
@@ -1001,6 +1044,55 @@
                 "shim"
             ],
             "time": "2016-11-14 01:06:16"
+        },
+        {
+            "name": "symfony/process",
+            "version": "3.4.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "9794f948d9af3be0157185051275d78b24d68b92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/9794f948d9af3be0157185051275d78b24d68b92",
+                "reference": "9794f948d9af3be0157185051275d78b24d68b92",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-08-03 09:34:20"
         },
         {
             "name": "symfony/translation",
@@ -2189,7 +2281,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "phpcasts/yaf-console": 20
+        "phpcasts/yaf-library": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

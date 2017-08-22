@@ -5,12 +5,13 @@ define('APP_ROOT', dirname(__DIR__));
 define('APP_PATH', APP_ROOT . '/application');
 require APP_ROOT . '/vendor/autoload.php';
 
-use PHPCasts\GenerateModule;
-use PHPCasts\GenerateController;
-use PHPCasts\GenerateModel;
-use PHPCasts\GeneratePlugin;
-use PHPCasts\Check;
+use PHPCasts\Console\GenerateModule;
+use PHPCasts\Console\GenerateController;
+use PHPCasts\Console\GenerateModel;
+use PHPCasts\Console\GeneratePlugin;
+use PHPCasts\Console\Check;
 use Symfony\Component\Console\Application;
+use PHPCasts\Console\ServeCommand;
 
 $application = new Application();
 
@@ -20,5 +21,6 @@ $application->add(new GenerateController());
 $application->add(new GenerateModel());
 $application->add(new GeneratePlugin());
 $application->add(new Check());
+$application->add(new ServeCommand());
 
 $application->run();

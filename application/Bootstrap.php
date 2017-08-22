@@ -151,19 +151,19 @@ class Bootstrap extends Bootstrap_Abstract
      *
      * @param Dispatcher|\Yaf\Dispatcher $dispatcher
      */
-    public function _initDefaultDbAdapter(Dispatcher $dispatcher)
-    {
-        $capsule = new Capsule();
-        $db = $this->config['database'];
-        $capsule->addConnection($db);
-        $capsule->setEventDispatcher(new LDispatcher(new LContainer));
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
-
-        // todo: 记录执行的sql
-        // see: https://github.com/JustPoet/eyaf
-        if (ini_get('yaf.environ') != 'production') {
-            $capsule->getConnection()->enableQueryLog();
-        }
-    }
+    //public function _initDefaultDbAdapter(Dispatcher $dispatcher)
+    //{
+    //    $capsule = new Capsule();
+    //    $db = $this->config['database'];
+    //    $capsule->addConnection($db);
+    //    $capsule->setEventDispatcher(new LDispatcher(new LContainer));
+    //    $capsule->setAsGlobal();
+    //    $capsule->bootEloquent();
+    //
+    //    // todo: 记录执行的sql
+    //    // see: https://github.com/JustPoet/eyaf
+    //    if (ini_get('yaf.environ') != 'production') {
+    //        $capsule->getConnection()->enableQueryLog();
+    //    }
+    //}
 }

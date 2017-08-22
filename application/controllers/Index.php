@@ -1,6 +1,6 @@
 <?php
 
-use Core\Log;
+use PHPCasts\Log\Log;
 use Yaf\Request\Http;
 
 class IndexController extends Core\Mvc\Controller\Web
@@ -19,6 +19,7 @@ class IndexController extends Core\Mvc\Controller\Web
         //// 获取
         //$user = UserModel::find(1);
         //echo $user->toJson();
+        Log::info('test', $this->getServer());
         $this->getResponse()->setBody('index');
     }
 
