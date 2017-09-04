@@ -9,8 +9,8 @@
         "monolog/monolog": "^1.13",
         "guzzlehttp/guzzle": "^6.2",
         "pimple/pimple": "^3.0",
-        "illuminate/Database": "^5.4",
-        "illuminate/events": "^5.4",
+        "illuminate/Database": "^5.5",
+        "illuminate/events": "^5.5",
         "phpcasts/yaf-library": "dev-master"
     },
     "require-dev": {
@@ -24,5 +24,11 @@
         "files": [
             "application/library/helpers.php"
         ]
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
     }
 }

@@ -53,6 +53,10 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initPlugin(Dispatcher $dispatcher)
     {
         $dispatcher->registerPlugin(new ModuleBootstrapPlugin());
+
+        if (ini_get('yaf.environ') != 'production') {
+            $dispatcher->registerPlugin(new QueryLogPlugin());
+        }
     }
 
     /**
@@ -65,14 +69,6 @@ class Bootstrap extends Bootstrap_Abstract
         //在这里注册自己的路由协议,默认使用简单路由
         // 增加一些路由规则
         // 默认是 Yaf_Route_Static
-        // 支持以下方式
-        // Yaf_Route_Simple
-        // Yaf_Route_Supervar
-        // Yaf_Route_Static
-        // Yaf_Route_Map
-        // Yaf_Route_Rewrite
-        // Yaf_Route_Regex
-
         $config = require(APP_ROOT . '/conf/routes.php');
         $dispatcher->getRouter()->addConfig($config);
 
@@ -141,29 +137,38 @@ class Bootstrap extends Bootstrap_Abstract
     /**
      * @param Dispatcher $dispatcher
      */
-    //protected function _initTwig(Dispatcher $dispatcher)
-    //{
-    //    $dispatcher->setView(new Twig(APP_PATH . '/views/', $this->config->twig->toArray()));
-    //}
+    protected function _initTwig(Dispatcher $dispatcher)
+    {
+        //if ($dispatcher->getRequest()->getMethod() !== 'CLI' ) {
+        //    $modules_names = explode(',', $this->config->application->modules);
+        //    $paths = [APP_PATH . '/application/views'];
+        //    array_walk($modules_names, function ($v) use (&$paths) {
+        //        if (is_dir(APP_PATH . '/modules/' . $v . '/views')) {
+        //            array_push($paths, APP_PATH . '/modules/' . $v . '/views');
+        //        }
+        //    });
+        //    // $dispatcher->setView(new TwigAdapter($paths, $this->config->twig->toArray()));
+        //}
+    }
 
     /**
      * 初始化 Eloquent ORM
      *
      * @param Dispatcher|\Yaf\Dispatcher $dispatcher
      */
-    //public function _initDefaultDbAdapter(Dispatcher $dispatcher)
-    //{
-    //    $capsule = new Capsule();
-    //    $db = $this->config['database'];
-    //    $capsule->addConnection($db);
-    //    $capsule->setEventDispatcher(new LDispatcher(new LContainer));
-    //    $capsule->setAsGlobal();
-    //    $capsule->bootEloquent();
-    //
-    //    // todo: 记录执行的sql
-    //    // see: https://github.com/JustPoet/eyaf
-    //    if (ini_get('yaf.environ') != 'production') {
-    //        $capsule->getConnection()->enableQueryLog();
-    //    }
-    //}
+    public function _initDefaultDbAdapter(Dispatcher $dispatcher)
+    {
+        $capsule = new Capsule();
+        $db = $this->config['database'];
+        $capsule->addConnection($db);
+        $capsule->setEventDispatcher(new LDispatcher(new LContainer));
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
+
+        // todo: 记录执行的sql
+        // see: https://github.com/JustPoet/eyaf
+        if (ini_get('yaf.environ') != 'production') {
+            $capsule->getConnection()->enableQueryLog();
+        }
+    }
 }

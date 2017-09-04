@@ -73,7 +73,7 @@ class Bootstrap extends Bootstrap_Abstract
     {
         $uid = $this->di->get('srv.user')->getCurrentUid();
         if (!$uid) {
-            throw new \Exception('用户未登录', Code::AUTH_FAILED);
+            // throw new \Exception('用户未登录', Code::AUTH_FAILED);
         }
 
         $userInfo = $this->di->get('srv.user')->getCurrentUserInfo();
