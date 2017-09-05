@@ -19,7 +19,6 @@ class IndexController extends Web
      */
     public function indexAction()
     {
-        echo \Yaf\ENVIRON;
         return $this->display('hello');
     }
 
