@@ -9,6 +9,7 @@
  * 调用的次序, 和申明的次序相同
  */
 
+use PHPCasts\Views\Twig;
 use Yaf\Bootstrap_Abstract;
 use Yaf\Registry;
 use Yaf\Loader;
@@ -130,8 +131,11 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initView(Dispatcher $dispatcher)
     {
         //在这里注册自己的view控制器，例如smarty
-        // 不自动渲染视图
-        $dispatcher->autoRender(false);
+        if ($dispatcher->getRequest()->getMethod() === 'CLI' ) {
+            // 不自动渲染视图
+            $dispatcher->autoRender(false);
+        }
+
     }
 
     /**
@@ -139,16 +143,36 @@ class Bootstrap extends Bootstrap_Abstract
      */
     protected function _initTwig(Dispatcher $dispatcher)
     {
-        //if ($dispatcher->getRequest()->getMethod() !== 'CLI' ) {
-        //    $modules_names = explode(',', $this->config->application->modules);
-        //    $paths = [APP_PATH . '/application/views'];
-        //    array_walk($modules_names, function ($v) use (&$paths) {
-        //        if (is_dir(APP_PATH . '/modules/' . $v . '/views')) {
-        //            array_push($paths, APP_PATH . '/modules/' . $v . '/views');
-        //        }
-        //    });
-        //    // $dispatcher->setView(new TwigAdapter($paths, $this->config->twig->toArray()));
-        //}
+        if ($dispatcher->getRequest()->getMethod() !== 'CLI' ) {
+            // twig模板引擎
+            $viewEngine = $this->config['application']['view']['engine'];
+            if ($viewEngine == 'twig') {
+                // 支持多模块
+                $modulesName = $dispatcher->getRequest()->module;
+                $modulesName = 'Web';
+                if ($modulesName !== 'Index') {
+                    $path = [APP_PATH . '/modules/' . $modulesName . '/views'];
+                } else {
+                    $path = [APP_PATH . '/views'];
+                }
+
+                $dispatcher->setView(new Twig($path, $this->config['twig']));
+                //$modulesNames = explode(',', $this->config['application']['modules']);
+                //$paths = [APP_PATH . '/views'];
+                //$dispatcher->setView(new Twig($paths, $this->config['twig']));
+                //array_walk($modulesNames, function ($v) use (&$paths) {
+                //    if (is_dir(APP_PATH . '/modules/' . $v . '/views')) {
+                //        array_push($paths, APP_PATH . '/modules/' . $v . '/views');
+                //    }
+                //});
+                //
+                //$dispatcher->setView(new Twig($paths, $this->config['twig']));
+            }
+            // blade模板引擎
+            elseif ($viewEngine == 'blade') {
+
+            }
+        }
     }
 
     /**
@@ -164,6 +188,8 @@ class Bootstrap extends Bootstrap_Abstract
         $capsule->setEventDispatcher(new LDispatcher(new LContainer));
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
+
+        class_alias('\Illuminate\Database\Capsule\Manager', 'DB');
 
         // todo: 记录执行的sql
         // see: https://github.com/JustPoet/eyaf

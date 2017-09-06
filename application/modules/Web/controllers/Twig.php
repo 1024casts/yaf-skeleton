@@ -2,7 +2,7 @@
 
 use Core\Mvc\Controller\Web;
 
-class IndexController extends Web
+class TwigController extends Yaf\Controller_Abstract
 {
 
     /**
@@ -11,11 +11,6 @@ class IndexController extends Web
      * @var array
      */
     protected static $ignoreUserAuth = ['test','index'];
-
-    public function helloAction()
-    {
-        echo 'Hello World!';
-    }
 
     /**
      * @return bool|void
@@ -28,7 +23,5 @@ class IndexController extends Web
 
         $this->getView()->assign("content", $data);
         $this->getView()->assign("users", $users);
-
-        return $this->display('test', ['content' => $data]);
     }
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Yaf!</title>
+</head>
+<body>
+<h1>twig: {{ content }}</h1>
+
+{% for user in users %}
+* {{ user.name }}
+{% else %}
+No users have been found.
+{% endfor %}
+</body>
+</html>
