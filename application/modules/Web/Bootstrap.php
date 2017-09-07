@@ -2,6 +2,14 @@
 
 namespace Web;
 
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\View\Engines\CompilerEngine;
+use Illuminate\View\Engines\EngineResolver;
+use Illuminate\View\Engines\PhpEngine;
+use Illuminate\View\FileViewFinder;
+use PHPCasts\Views\Blade\Dispatcher as BladeDispatcher;
+use PHPCasts\Views\Blade\View;
 use PHPCasts\Views\Twig;
 use Yaf\Bootstrap_Abstract;
 use Yaf\Dispatcher;
@@ -87,17 +95,58 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initTwig(Dispatcher $dispatcher)
     {
         $config = Registry::get('config');
+        $modulesName = $dispatcher->getRequest()->module;
+        $viewPath = APP_PATH . '/modules/' . $modulesName . '/views';
 
         // twig模板引擎
         $viewEngine = $config['application']['view']['engine'];
         if ($viewEngine == 'twig') {
-            $modulesName = $dispatcher->getRequest()->module;
-            $path = [APP_PATH . '/modules/' . $modulesName . '/views'];
-            $dispatcher->setView(new Twig($path, $config['twig']));
+            $dispatcher->setView(new Twig($viewPath, $config['twig']));
         }
         // blade模板引擎
         elseif ($viewEngine == 'blade') {
-
+            $finder = new FileViewFinder(new Filesystem(), [$viewPath]);  //finder实例
+            $viewFactory = new View($this->registerEngineResolver(), $finder, new BladeDispatcher());  //视图工厂
+            $dispatcher->setView($viewFactory);  //设置模板引擎
         }
+    }
+
+    /**
+     * 注册模板引擎
+     * @return EngineResolver
+     */
+    protected function registerEngineResolver()
+    {
+        $resolver = new EngineResolver;
+        foreach (['php', 'blade'] as $engine) {
+            $this->{'register'.ucfirst($engine).'Engine'}($resolver);
+        }
+        return $resolver;
+    }
+    /**
+     * 注册PHP模板引擎
+     *
+     * @param  \Illuminate\View\Engines\EngineResolver  $resolver
+     * @return void
+     */
+    protected function registerPhpEngine($resolver)
+    {
+        $resolver->register('php', function () {
+            return new PhpEngine;
+        });
+    }
+    /**
+     * 注册blade模板引擎
+     *
+     * @param  \Illuminate\View\Engines\EngineResolver  $resolver
+     * @return void
+     */
+    protected function registerBladeEngine($resolver)
+    {
+        $cache = Registry::get('config')['blade']['cache'];  //获取编译路径
+        $bladeCompiler = new BladeCompiler(new Filesystem(), $cache); //实例blade模板编译类
+        $resolver->register('blade', function () use ($bladeCompiler) {
+            return new CompilerEngine($bladeCompiler);
+        });
     }
 }

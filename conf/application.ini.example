@@ -1,48 +1,44 @@
 [common]
-;应用程序的目录，包含"controllers", "views", "models", "plugins"等子目录。
 application.directory   = APP_PATH
-;允许模块名称
 application.modules     = Index,Web,Admin,Api,Console
-;默认路由，如果未指定，静态路由会被当做是默认路由，参见： Yaf\Router::addRoute()。
 application.dispatcher.defaultRoute = static
-;在application.dispatcher.throwException开启的状态下, 是否启用默认捕获异常机制,默认关闭状态。开启此项，如果有未捕获的异常，Yaf将会把它定向到Error controller, Error Action。参见 Yaf_Dispatcher::catchException()。
 application.dispatcher.catchException = 0
-;切换在Yaf出错的时候抛出异常, 还是触发错误.默认的是开启状态.开启此项，Yaf会在发生错误的地方抛出异常。参见 Yaf\Dispatcher::throwException()。
-application.dispatcher.throwException = 0
 
 ; Layout
-application.library = APP_PATH "/library"   ;本地库路径
-;application.library.directory = APP_PATH "/library" ;本地库路径
-;application.library.namespace = “Core,Base” ;开启本地命名空间前缀,逗号分隔的本地类库命名空间前缀。
-;application.bootstrap = APP_PATH . "/Bootstrap" . application.ext ;Bootstrap类脚本文件的绝对路径。
+application.library = APP_PATH "/library"
 application.layoutpath = APP_PATH "/views/"
 application.document = "layout.phtml"
 application.cache_config = 0
-application.view.ext = "phtml"  ;视图模板扩展名。
-;application.ext="php" ;PHP脚本的扩展名，类的自动加载需要用到它( Yaf\Loader)。
+; twig engine
+;application.view.ext = "phtml"
+;application.view.engine = "twig"
+; blade engine
+application.view.engine = "blade"
+application.view.ext = "php"
 
 ; App
 ;application.baseUri = ''
 application.dispatcher.defaultController = index
 application.dispatcher.defaultAction = index
 
+;twig
+twig.cache = STORAGE_PATH "/cache/twig"
+;blade
+blade.cache = STORAGE_PATH "/cache/blade"
+
 ; 生产环境
 [product : common]
 application.showErrors = 0
 application.throwException = 0
-application.dispatcher.catchException = 0
-application.dispatcher.throwException = 0
 log.type = syslog
 log.host = 192.168.1.1
-loh.port = 5141
+log.port = 5141
 
 ; 测试环境
 [test : common]
 ;errors (see Bootstrap::initErrors)
 application.showErrors = 0
 application.throwException = 0
-application.dispatcher.catchException = 0
-application.dispatcher.throwException = 0
 
 ; 开发环境
 [develop : common]
@@ -50,49 +46,67 @@ application.debug = 1
 ;errors (see Bootstrap::initErrors)
 application.showErrors = 1
 application.throwException = 1
-application.dispatcher.catchException = 1
-application.dispatcher.throwException = 1
+;twig
+twig.debug = true
 
 ; queue
 queue.type = redis
 queue.name = default
 queue.redis = default
-queue.keyname = queues:default
 
 ; cache
 cache.type = redis
 cache.redis = default
 
 ; Redis
-redis.default.host = 192.168.0.1
+redis.default.host = 127.0.0.1
 redis.default.port = 6379
-redis.default.timeout = 30
 
-; Database Read-Write
-db.default.driver     = mysql
-db.default.host       = 127.0.0.1
-db.default.database   = business
-db.default.username   = root
-db.default.password   = 123456
-db.default.port       = 3306
-db.default.charset    = utf8
-db.default.collation  = utf8_unicode_ci
-db.default.prefix     = ""
+; database
+database.driver = mysql
+database.host = localhost
+database.database = laravel5
+database.username = root
+database.password = 12345678
+database.charset = utf8
+database.collation = utf8_general_ci
+database.prefix = ''
 
-; Database Readonly
-db.default_read.driver     = mysql
-db.default_read.host       = 127.0.0.1
-db.default_read.database   = business
-db.default_read.username   = root
-db.default_read.password   = 123456
-db.default_read.port       = 3306
-db.default_read.charset    = utf8
-db.default_read.collation  = utf8_unicode_ci
-db.default_read.prefix     = ""
+
+
+;默认的主机别名
+;database.default.server = testdb
+;; testdb这个库的写库主机IP
+;database.testdb.write.host = 127.0.0.1
+;database.testdb.write.port = 3306
+;database.testdb.write.database = testdb
+;database.testdb.write.username = root
+;database.testdb.write.password = 123456
+;database.testdb.write.charset = utf8
+;database.testdb.write.collation = collation
+;database.testdb.write.prefix = tbl_
+;database.testdb.write.pconnect = 0
+;
+;; testdb这个库的读库主机IP
+;database.testdb.read.host = 127.0.0.1
+;database.testdb.read.port = 3306
+;database.testdb.read.database = testdb
+;database.testdb.read.username = root
+;database.testdb.read.password = 123456
+;database.testdb.read.charset = utf8
+;database.testdb.read.collation = collation
+;database.testdb.read.prefix = tbl_
+;database.testdb.read.pconnect = 0
 
 ; Log
 log.level = debug
-log.channel = business
+log.channel = default
 log.file.dir = APP_ROOT "/storage/logs"
 ; log.syslog.host = 127.0.0.1
 ; log.syslog.port = 9999
+
+; upload
+; maxSize 3M
+upload.config.maxSize   = 3145728
+upload.config.rootPath  = APP_ROOT "/public/uploads"
+upload.config.savePath  = "/documents/"

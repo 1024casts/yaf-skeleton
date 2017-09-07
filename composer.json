@@ -13,7 +13,8 @@
         "illuminate/Database": "^5.5",
         "illuminate/events": "^5.5",
         "phpcasts/yaf-library": "dev-master",
-        "twig/twig": "^3.0@dev"
+        "twig/twig": "^3.0@dev",
+        "illuminate/view": "^5.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.3"
