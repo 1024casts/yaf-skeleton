@@ -1,7 +1,11 @@
 <?php
 
-use Core\Mvc\Controller\Web;
-
+/**
+ *
+ * 此控制器主要用来测试twig模板引擎
+ *
+ * Class TwigController
+ */
 class TwigController extends Yaf\Controller_Abstract
 {
 
@@ -19,7 +23,7 @@ class TwigController extends Yaf\Controller_Abstract
     {
         $data = 'Hello Yaf!';
 
-        $users = [['name'=> 'user1'], ['name'=>'user2']];
+        $users = [['name'=> 'user1'], ['name'=>'user2'], ['name'=>'user3']];
 
         $this->getView()->assign("content", $data);
         $this->getView()->assign("users", $users);

@@ -2,7 +2,7 @@
 
 namespace Web;
 
-use App\Defines\Code;
+use PHPCasts\Views\Twig;
 use Yaf\Bootstrap_Abstract;
 use Yaf\Dispatcher;
 use Yaf\Loader;
@@ -81,5 +81,23 @@ class Bootstrap extends Bootstrap_Abstract
         $this->di->get('sessionBag')->set('uid', $uid);
     }
 
+    /**
+     * @param Dispatcher $dispatcher
+     */
+    public function _initTwig(Dispatcher $dispatcher)
+    {
+        $config = Registry::get('config');
 
+        // twig模板引擎
+        $viewEngine = $config['application']['view']['engine'];
+        if ($viewEngine == 'twig') {
+            $modulesName = $dispatcher->getRequest()->module;
+            $path = [APP_PATH . '/modules/' . $modulesName . '/views'];
+            $dispatcher->setView(new Twig($path, $config['twig']));
+        }
+        // blade模板引擎
+        elseif ($viewEngine == 'blade') {
+
+        }
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Yaf\Loader;
-use Core\Bootstrap;
+use PHPCasts\Bootstrap;
 
 /**
  * 初始化插件
