@@ -105,8 +105,10 @@ class Bootstrap extends Bootstrap_Abstract
         }
         // blade模板引擎
         elseif ($viewEngine == 'blade') {
-            $finder = new FileViewFinder(new Filesystem(), [$viewPath]);  //finder实例
-            $viewFactory = new View($this->registerEngineResolver(), $finder, new BladeDispatcher());  //视图工厂
+            // finder实例
+            $finder = new FileViewFinder(new Filesystem(), [$viewPath]);
+            // 视图工厂
+            $viewFactory = new View($this->registerEngineResolver(), $finder, new BladeDispatcher());
             $dispatcher->setView($viewFactory);  //设置模板引擎
         }
     }
