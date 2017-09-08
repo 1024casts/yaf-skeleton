@@ -109,7 +109,8 @@ class Bootstrap extends Bootstrap_Abstract
             $finder = new FileViewFinder(new Filesystem(), [$viewPath]);
             // 视图工厂
             $viewFactory = new View($this->registerEngineResolver(), $finder, new BladeDispatcher());
-            $dispatcher->setView($viewFactory);  //设置模板引擎
+            // 设置模板引擎
+            $dispatcher->setView($viewFactory);
         }
     }
 
