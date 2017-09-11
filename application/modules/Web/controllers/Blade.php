@@ -27,5 +27,7 @@ class BladeController extends Base
         $list = [['name'=>'ZhangSan', 'age'=>18], ['name'=>'Lisi', 'age'=>20]];
 
         $this->getView()->display("blade.test", compact('list','name'));
+
+        exit;
     }
 }

@@ -8,9 +8,9 @@ use Illuminate\View\Engines\CompilerEngine;
 use Illuminate\View\Engines\EngineResolver;
 use Illuminate\View\Engines\PhpEngine;
 use Illuminate\View\FileViewFinder;
-use PHPCasts\Views\Blade\Dispatcher as BladeDispatcher;
-use PHPCasts\Views\Blade\View;
-use PHPCasts\Views\Twig;
+use PHPCasts\Views\Adapter\Dispatcher as BladeDispatcher;
+use PHPCasts\Views\Adapter\BladeAdapter;
+use PHPCasts\Views\Adapter\TwigAdapter;
 use Yaf\Bootstrap_Abstract;
 use Yaf\Dispatcher;
 use Yaf\Loader;
@@ -92,7 +92,7 @@ class Bootstrap extends Bootstrap_Abstract
     /**
      * @param Dispatcher $dispatcher
      */
-    public function _initTwig(Dispatcher $dispatcher)
+    public function _initView(Dispatcher $dispatcher)
     {
         $config = Registry::get('config');
         $modulesName = $dispatcher->getRequest()->module;
@@ -101,14 +101,14 @@ class Bootstrap extends Bootstrap_Abstract
         // twig模板引擎
         $viewEngine = $config['application']['view']['engine'];
         if ($viewEngine == 'twig') {
-            $dispatcher->setView(new Twig($viewPath, $config['twig']));
+            $dispatcher->setView(new TwigAdapter($viewPath, $config['twig']));
         }
         // blade模板引擎
         elseif ($viewEngine == 'blade') {
             // finder实例
             $finder = new FileViewFinder(new Filesystem(), [$viewPath]);
             // 视图工厂
-            $viewFactory = new View($this->registerEngineResolver(), $finder, new BladeDispatcher());
+            $viewFactory = new BladeAdapter($this->registerEngineResolver(), $finder, new BladeDispatcher());
             // 设置模板引擎
             $dispatcher->setView($viewFactory);
         }
