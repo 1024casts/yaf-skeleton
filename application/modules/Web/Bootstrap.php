@@ -2,20 +2,23 @@
 
 namespace Web;
 
+use Yaf\Bootstrap_Abstract;
+use Yaf\Dispatcher;
+use Yaf\Loader;
+use Yaf\Registry;
+use Yaf\Request_Abstract;
+
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\View\Engines\CompilerEngine;
 use Illuminate\View\Engines\EngineResolver;
 use Illuminate\View\Engines\PhpEngine;
 use Illuminate\View\FileViewFinder;
+
 use PHPCasts\Views\Adapter\Dispatcher as BladeDispatcher;
 use PHPCasts\Views\Adapter\BladeAdapter;
 use PHPCasts\Views\Adapter\TwigAdapter;
-use Yaf\Bootstrap_Abstract;
-use Yaf\Dispatcher;
-use Yaf\Loader;
-use Yaf\Registry;
-use Yaf\Request_Abstract;
+
 
 class Bootstrap extends Bootstrap_Abstract
 {
