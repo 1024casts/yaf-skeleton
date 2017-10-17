@@ -1,6 +1,5 @@
 vendor
 .idea/
-storage/cache/twig
-/nbproject/*
-.DS*
+storage/cache
+*.log
 
