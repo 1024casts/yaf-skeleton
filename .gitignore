@@ -1,5 +1,7 @@
 vendor
 .idea/
-storage/cache
-*.log
 
+storage/cache
+storage/data
+storage/logs
+storage/sql
