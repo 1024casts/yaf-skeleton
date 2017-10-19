@@ -1,14 +1,14 @@
 <?php
 
-use Core\Controllers\Web;
-use Core\Log;
+use PHPCasts\Mvc\Controller\Web;
+use PHPCasts\Log\Log;
+
 /**
  * yaf 框架报错类调用
  * 默认错误会调用这个Controller 中 ErrorAction
  */
 class ErrorController extends Web
 {
-
     /**
      * @param Exception $exception
      */
