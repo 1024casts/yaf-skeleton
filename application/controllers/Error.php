@@ -17,7 +17,7 @@ class ErrorController extends Web
         $this->_view->setScriptPath(APP_PATH . '/views');
 
         switch ($exception->getCode()) {
-            case YAF\ERR\AUTOLOAD\FAILED:
+            case YAF\ERR\AUTOLOAD_FAILED:
             case YAF\ERR\NOTFOUND\MODULE:
             case YAF\ERR\NOTFOUND\CONTROLLER:
             case YAF\ERR\NOTFOUND\ACTION:
