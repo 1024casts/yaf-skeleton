@@ -23,7 +23,7 @@ use PHPCasts\Views\Adapter\TwigAdapter;
 class Bootstrap extends Bootstrap_Abstract
 {
     /**
-     * @var \Core\Di\ContainerInterface|mixed
+     * @var \PHPCasts\Di\ContainerInterface|mixed
      */
     private $di;
 
