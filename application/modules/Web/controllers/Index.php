@@ -1,6 +1,6 @@
 <?php
 
-use Core\Mvc\Controller\Web;
+use PHPCasts\Mvc\Controller\Web;
 
 class IndexController extends Web
 {
@@ -15,6 +15,8 @@ class IndexController extends Web
     public function helloAction()
     {
         echo 'Hello World!';
+
+        exit;
     }
 
     /**
