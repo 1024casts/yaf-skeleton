@@ -2,6 +2,8 @@
 
 yaf 基本功能介绍（含常用类库）
 
+[Yaf框架基础系列视频教程汇总](https://www.phpcasts.org/posts/yaf-tutorial-series-summary)
+
 ## 安装
 
 `composer create-project phpcasts/yaf-skeleton yaf-demo dev-master -vvv`
