@@ -4,4 +4,4 @@
 
 [https://github.com/qloog/yaf-library](https://github.com/qloog/yaf-library)
 
- > 主要是通过composer下载, 然后通过启动程序Bootstrap自动加载composer生成的autoload到框架里。
+ > 主要是通过 Composer下载, 然后通过启动程序Bootstrap自动加载 Composer 生成的 autoload.php 到框架里。
