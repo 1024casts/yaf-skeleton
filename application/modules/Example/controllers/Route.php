@@ -4,10 +4,59 @@ use Yaf\Controller_Abstract;
 
 class RouteController extends Controller_Abstract
 {
-	public function indexAction()
-	{
-		//here to write request;
-		//here to call business logic;
-		//here to write response;
+    /**
+     * 静态路由
+     */
+    public function staticAction()
+    {
+        
+	}
+
+    /**
+     * simple 路由
+     */
+    public function simpleAction()
+    {
+        
+	}
+
+    /**
+     * supervar 路由
+     */
+    public function supervarAction()
+    {
+        
+	}
+
+    /**
+     * rewrite 路由
+     */
+    public function rewriteAction()
+    {
+        
+	}
+
+    /**
+     * 正则路由
+     */
+    public function regexAction()
+    {
+        
+	}
+
+    /**
+     * map 路由
+     */
+    public function mapAction()
+    {
+        
+	}
+
+    /**
+     * 自定义路由
+     */
+    public function customAction()
+    {
+        
 	}
 }
