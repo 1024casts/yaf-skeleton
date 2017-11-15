@@ -51,9 +51,9 @@ class ErrorController extends Web
                 ];
 
                 if (
-                    $exception instanceof \Core\Exceptions\ArgumentException
-                    || $exception instanceof \Core\Exceptions\AuthException
-                    || $exception instanceof \Core\Exceptions\HttpException
+                    $exception instanceof \PHPCasts\Exceptions\ArgumentException
+                    || $exception instanceof \PHPCasts\Exceptions\AuthException
+                    || $exception instanceof \PHPCasts\Exceptions\HttpException
                 ) {
                     $data['message'] = $exception->getMessage();
                 }
