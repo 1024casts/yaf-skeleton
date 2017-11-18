@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe3cf693424fddaa885281e9b6df5101",
+    "content-hash": "e00b527de7ba71231c2ae21484a6d6ba",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -738,12 +738,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/qloog/yaf-console.git",
-                "reference": "5f97b7d3f23342dd2041c07727283f297725abf6"
+                "reference": "229c3381414bdd9c994323097957505265b44a2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qloog/yaf-console/zipball/5f97b7d3f23342dd2041c07727283f297725abf6",
-                "reference": "5f97b7d3f23342dd2041c07727283f297725abf6",
+                "url": "https://files.phpcomposer.com/files/qloog/yaf-console/229c3381414bdd9c994323097957505265b44a2a.zip",
+                "reference": "229c3381414bdd9c994323097957505265b44a2a",
                 "shasum": ""
             },
             "require": {
@@ -775,7 +775,7 @@
                 "yaf命令行工具",
                 "yaf组件生成器"
             ],
-            "time": "2017-08-21T14:55:43+00:00"
+            "time": "2017-11-03T15:09:46+00:00"
         },
         {
             "name": "phpcasts/yaf-library",
@@ -783,12 +783,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/qloog/yaf-library.git",
-                "reference": "35ca51581d992112df0eda6f9db1eba82b26dfd2"
+                "reference": "8bdfafb183d7bec5f7dba2eeb4062da582d059be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/qloog/yaf-library/35ca51581d992112df0eda6f9db1eba82b26dfd2.zip",
-                "reference": "35ca51581d992112df0eda6f9db1eba82b26dfd2",
+                "url": "https://files.phpcomposer.com/files/qloog/yaf-library/8bdfafb183d7bec5f7dba2eeb4062da582d059be.zip",
+                "reference": "8bdfafb183d7bec5f7dba2eeb4062da582d059be",
                 "shasum": ""
             },
             "require": {
@@ -815,7 +815,7 @@
                 "yaf",
                 "yaf-library"
             ],
-            "time": "2017-09-11T14:11:53+00:00"
+            "time": "2017-11-17T09:23:43+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -2932,8 +2932,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "phpcasts/yaf-library": 20,
-        "twig/twig": 20
+        "twig/twig": 20,
+        "phpcasts/yaf-library": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

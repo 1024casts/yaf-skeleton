@@ -1,6 +1,6 @@
 <?php
 
-class IndexController extends Core\Mvc\Controller\Api
+class IndexController extends PHPCasts\Mvc\Controller\Api
 {
 
     public function testAction()
