@@ -9,7 +9,9 @@ class RouteController extends Controller_Abstract
      */
     public function staticAction()
     {
-        
+        \Yaf\Dispatcher::getInstance()->disableView();
+
+        echo 'PHPCasts';
 	}
 
     /**

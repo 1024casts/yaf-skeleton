@@ -70,7 +70,8 @@ class Bootstrap extends Bootstrap_Abstract
         // 增加一些路由规则
         // 默认是 Yaf_Route_Static
         $config = require(APP_ROOT . '/conf/routes.php');
-        $dispatcher->getRouter()->addConfig($config);
+        $router = $dispatcher->getRouter();
+        $router->addConfig($config);
 
         // or
         //$config = new \Yaf\Config\Ini(APP_PATH . '/conf/route.ini', 'common');
