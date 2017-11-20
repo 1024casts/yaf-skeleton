@@ -6,6 +6,8 @@ class RouteController extends Controller_Abstract
 {
     /**
      * 静态路由
+     *
+     * @example: http://yaf-skel.com/example/route/static
      */
     public function staticAction()
     {
@@ -16,10 +18,14 @@ class RouteController extends Controller_Abstract
 
     /**
      * simple 路由
+     *
+     * @example: http://yaf-skel.com/example/route/simple
      */
     public function simpleAction()
     {
-        
+        \Yaf\Dispatcher::getInstance()->disableView();
+
+        echo 'I am a simple route';
 	}
 
     /**

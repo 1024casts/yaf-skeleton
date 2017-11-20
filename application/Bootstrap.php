@@ -52,7 +52,7 @@ class Bootstrap extends Bootstrap_Abstract
      */
     public function _initPlugin(Dispatcher $dispatcher)
     {
-        $dispatcher->registerPlugin(new ModuleBootstrapPlugin());
+        //$dispatcher->registerPlugin(new ModuleBootstrapPlugin());
 
         if (ini_get('yaf.environ') != 'production') {
             $dispatcher->registerPlugin(new QueryLogPlugin());
@@ -69,15 +69,15 @@ class Bootstrap extends Bootstrap_Abstract
         //在这里注册自己的路由协议,默认使用简单路由
         // 增加一些路由规则
         // 默认是 Yaf_Route_Static
-        $config = require(APP_ROOT . '/conf/routes.php');
-        $router = $dispatcher->getRouter();
-        $router->addConfig($config);
 
-        // or
-        //$config = new \Yaf\Config\Ini(APP_PATH . '/conf/route.ini', 'common');
-        //if ($config->routes) {
-        //    $dispatcher->getRouter()->addConfig($config->routes);
-        //}
+        // 开启simple路由协议
+        $router = $dispatcher->getRouter();
+        $route = new Yaf\Route\Simple("m","c","a");
+        $router->addRoute('name', $route);
+
+        //$config = require(APP_ROOT . '/conf/routes.php');
+        //$router = $dispatcher->getRouter();
+        //$router->addConfig($config);
     }
 
     /**

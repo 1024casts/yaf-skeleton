@@ -3,7 +3,7 @@
 use PHPCasts\Log\Log;
 use Yaf\Request\Http;
 
-class IndexController extends Core\Mvc\Controller\Web
+class IndexController extends PHPCasts\Mvc\Controller\Web
 {
     /**
      * 初始化由yaf自动调用
@@ -25,6 +25,8 @@ class IndexController extends Core\Mvc\Controller\Web
 
     public function jsonAction()
     {
+        \Yaf\Dispatcher::getInstance()->disableView();
+
         $json = json_encode(['uid'=>1,'username'=>'admin']);
         $this->getResponse()->setBody($json);
     }
