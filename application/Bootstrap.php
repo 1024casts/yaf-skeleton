@@ -71,9 +71,46 @@ class Bootstrap extends Bootstrap_Abstract
         // 默认是 Yaf_Route_Static
 
         // 开启simple路由协议
+        //$router = $dispatcher->getRouter();
+        //$route = new Yaf\Route\Simple("m","c","a");
+        //$router->addRoute('name', $route);
+
+        // 开启supervar路由协议
+        //$router = $dispatcher->getRouter();
+        //$route = new Yaf\Route\Supervar('r');
+        //$router->addRoute('name', $route);
+
+        // 开启rewrite路由协议
+        //$router = $dispatcher->getRouter();
+        //$route = new Yaf\Route\Rewrite(
+        //    'product/:ident',
+        //    [
+        //        'module' => 'example',
+        //        'controller' => 'route',
+        //        'action' => 'rewrite'
+        //    ]
+        //    );
+        //$router->addRoute('product', $route);
+
+        // 开启regex路由协议
+        //$router = $dispatcher->getRouter();
+        //$route = new Yaf\Route\Regex(
+        //    '/product\/([\d]+)/',
+        //    [
+        //        'module' => 'example',
+        //        'controller' => 'route',
+        //        'action' => 'regex'
+        //    ],
+        //    [
+        //        1 => 'ident'
+        //    ]
+        //);
+        //$router->addRoute('product', $route);
+
+        // 开启map路由协议
         $router = $dispatcher->getRouter();
-        $route = new Yaf\Route\Simple("m","c","a");
-        $router->addRoute('name', $route);
+        $route = new Yaf\Route\Map('/example/route/map');
+        $router->addRoute('product', $route);
 
         //$config = require(APP_ROOT . '/conf/routes.php');
         //$router = $dispatcher->getRouter();
