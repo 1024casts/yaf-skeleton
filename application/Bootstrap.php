@@ -109,7 +109,7 @@ class Bootstrap extends Bootstrap_Abstract
 
         // 开启map路由协议
         $router = $dispatcher->getRouter();
-        $route = new Yaf\Route\Map('/example/route/map');
+        $route = new Yaf\Route\Map(false, '@');
         $router->addRoute('product', $route);
 
         //$config = require(APP_ROOT . '/conf/routes.php');
