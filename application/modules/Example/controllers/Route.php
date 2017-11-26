@@ -49,29 +49,32 @@ class RouteController extends Controller_Abstract
      * rewrite 路由
      *
      * @example: http://yaf-skel.com/product/iphone
+     *
+     *           http://yaf-skel.com/web/product/iphone
+     *
      */
     public function rewriteAction()
     {
-        echo 'I am a rewrite route' . PHP_EOL;
+        echo 'I am a rewrite route' . '<br/>';
 
         // 获取参数
-        echo 'matched param: ' . $this->getRequest()->getParam('ident');
+        echo 'matched param: ' . $this->getRequest()->getParam('name');
 	}
 
     /**
      * 正则路由
      *
-     *  @example: http://yaf-skel.com/product/1?a=1&b=2
+     *  @example: http://yaf-skel.com/product/1/2?a=1
      */
     public function regexAction()
     {
         echo 'I am a regex route' . PHP_EOL;
 
         // 获取参数
-        echo 'matched param: ' . $this->getRequest()->getParam('ident');
+        echo 'id matched param: ' . $this->getRequest()->getParam('id');
+        echo 'tag id matched param: ' . $this->getRequest()->getParam('tag_id');
         echo '<br>';
-        echo $this->getRequest()->getQuery('a');
-        echo $this->getRequest()->getQuery('b');
+        echo 'a value is:' . $this->getRequest()->getQuery('a');
 	}
 
     /**

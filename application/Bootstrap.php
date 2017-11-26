@@ -83,34 +83,62 @@ class Bootstrap extends Bootstrap_Abstract
         // 开启rewrite路由协议
         //$router = $dispatcher->getRouter();
         //$route = new Yaf\Route\Rewrite(
-        //    'product/:ident',
+        //    '/product/:name',
         //    [
         //        'module' => 'example',
         //        'controller' => 'route',
         //        'action' => 'rewrite'
         //    ]
-        //    );
-        //$router->addRoute('product', $route);
+        //);
+        //$router->addRoute('name', $route);
 
         // 开启regex路由协议
-        //$router = $dispatcher->getRouter();
-        //$route = new Yaf\Route\Regex(
-        //    '/product\/([\d]+)/',
-        //    [
-        //        'module' => 'example',
-        //        'controller' => 'route',
-        //        'action' => 'regex'
-        //    ],
-        //    [
-        //        1 => 'ident'
-        //    ]
-        //);
-        //$router->addRoute('product', $route);
+        $router = $dispatcher->getRouter();
+        $route = new Yaf\Route\Regex(
+            '/product\/([\d]+)\/([\d]+)/',
+            [
+                'module' => 'example',
+                'controller' => 'route',
+                'action' => 'regex'
+            ],
+            [
+                1 => 'id',
+                2 => 'tag_id'
+            ]
+        );
+        $router->addRoute('name', $route);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // 开启map路由协议
-        $router = $dispatcher->getRouter();
-        $route = new Yaf\Route\Map(false, '@');
-        $router->addRoute('product', $route);
+        //$router = $dispatcher->getRouter();
+        //$route = new Yaf\Route\Map(true, '#');
+        //$router->addRoute('product', $route);
 
         //$config = require(APP_ROOT . '/conf/routes.php');
         //$router = $dispatcher->getRouter();
