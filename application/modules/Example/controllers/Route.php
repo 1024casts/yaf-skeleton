@@ -83,6 +83,7 @@ class RouteController extends Controller_Abstract
     public function mapAction()
     {
         echo 'I am a map route' . PHP_EOL;
+        exit;
 	}
 
     /**
