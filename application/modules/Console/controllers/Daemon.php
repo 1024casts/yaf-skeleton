@@ -78,7 +78,8 @@ class Daemon {
 
     }
 
-    private function daemon(){
+    private function daemon()
+    {
         if (file_exists($this->pidFile)) {
             printf("The file $this->pidFile exists.\n");
             exit();
@@ -124,6 +125,7 @@ class Daemon {
             sleep(self::sleep);
         }
     }
+
     private function stop()
     {
         if (file_exists($this->pidFile)) {
