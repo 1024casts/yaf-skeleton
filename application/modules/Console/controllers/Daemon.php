@@ -1,6 +1,8 @@
 <?php
 /*
  * PHP Daemon sample.
+ *
+ * @see http://www.netkiller.cn/journal/php.daemon.html
 */
 
 final class Signal
@@ -31,15 +33,15 @@ class Test {
         //self::$signal == null;
     }
     public function run(){
-        while(true){
-            pcntl_signal_dispatch();
+        //while(true){
+            //pcntl_signal_dispatch();
             printf(".");
-            sleep(1);
+            //sleep(1);
             if(Signal::get() == SIGHUP){
                 Signal::reset();
-                break;
+                //break;
             }
-        }
+        //}
         printf("\n");
     }
 }
