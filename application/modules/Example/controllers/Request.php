@@ -1,13 +1,28 @@
 <?php
 
 use Yaf\Controller_Abstract;
+use Yaf\Request\Http as Request_Http;
+use Yaf\Request\Simple as Request_Simple;
 
 class RequestController extends Controller_Abstract
 {
     public function serverInfoAction()
     {
-        //var_dump($this->getRequest()->getServer(), $_SERVER);
-        var_dump($this->getRequest()->getEnv(), $_ENV);
+        $request = $this->getRequest();
+
+        // output: Yaf_Request_Http
+        echo "request class 所属实例: ";
+        if ($request instanceof Request_Http) {
+            echo "Yaf_Request_Http";
+        } elseif ($request instanceof Request_Simple) {
+            echo "Yaf_Request_Simple";
+        } else {
+            echo "yaf_Request_Abstract";
+        }
+        echo "<br/>";
+
+        var_dump($this->getRequest()->getServer() === $_SERVER);
+        var_dump($this->getRequest()->getEnv() === $_ENV);
         var_dump($this->getRequest()->getLanguage());
 
         exit;
@@ -18,19 +33,32 @@ class RequestController extends Controller_Abstract
      */
     public function paramsAction()
     {
-        var_dump($this->getRequest()->get('test'));
-        var_dump($this->getRequest()->getQuery());
-        var_dump($this->getRequest()->getQuery('test'));
-        var_dump($this->getRequest()->getPost());
-        var_dump($this->getRequest()->getPost('test'));
-        var_dump($this->getRequest()->getParams());
-        var_dump($this->getRequest()->getParam('uid'));
+        $request = $this->getRequest();
 
-        var_dump($this->getRequest()->getRequestUri());
-        var_dump($this->getRequest()->getMethod());
-        var_dump($this->getRequest()->getBaseUri());
-        var_dump($this->getRequest()->getCookie());
-        var_dump($this->getRequest()->getFiles());
+        echo "get('test'))" . PHP_EOL;
+        var_dump($request->get('test'));
+        echo PHP_EOL . 'getQuery:' . PHP_EOL;
+        var_dump($request->getQuery());
+        echo 'getQuery:' . PHP_EOL;
+        var_dump($request->getQuery('test'));
+        echo 'getPost:' . PHP_EOL;
+        var_dump($request->getPost());
+        echo 'getPost:' . PHP_EOL;
+        var_dump($request->getPost('test'));
+        echo 'getParams:' . PHP_EOL;
+        var_dump($request->getParams());
+        echo 'getParam:' . PHP_EOL;
+        var_dump($request->getParam('uid'));
+        echo 'getRequestUri:' . PHP_EOL;
+        var_dump($request->getRequestUri());
+        echo 'getMethod:' . PHP_EOL;
+        var_dump($request->getMethod());
+        echo 'getBaseUri:' . PHP_EOL;
+        var_dump($request->getBaseUri());
+        echo 'getCookie:' . PHP_EOL;
+        var_dump($request->getCookie());
+        echo 'getFiles:' . PHP_EOL;
+        var_dump($request->getFiles());
 
         exit;
     }
@@ -58,13 +86,18 @@ class RequestController extends Controller_Abstract
     {
         $this->getRequest()->setModuleName('Api');
         var_dump($this->getRequest()->getModuleName());
+
         $this->getRequest()->setControllerName('Index');
         var_dump($this->getRequest()->getControllerName());
+
         $this->getRequest()->setActionName('xxx');
         var_dump($this->getRequest()->getActionName());
+
         var_dump($this->getRequest()->getException());
+
         $this->getRequest()->setDispatched();
         var_dump($this->getRequest()->isDispatched());
+
         $this->getRequest()->setRouted();
         var_dump($this->getRequest()->isRouted());
 
