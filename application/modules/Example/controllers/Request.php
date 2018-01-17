@@ -6,6 +6,13 @@ use Yaf\Request\Simple as Request_Simple;
 
 class RequestController extends Controller_Abstract
 {
+
+    public function init()
+    {
+        // 禁用模板渲染
+        Yaf\Dispatcher::getInstance()->disableView();
+    }
+
     public function serverInfoAction()
     {
         $request = $this->getRequest();
@@ -21,11 +28,9 @@ class RequestController extends Controller_Abstract
         }
         echo "<br/>";
 
-        var_dump($this->getRequest()->getServer() === $_SERVER);
-        var_dump($this->getRequest()->getEnv() === $_ENV);
-        var_dump($this->getRequest()->getLanguage());
-
-        exit;
+        var_dump($this->getRequest()->getServer() === $_SERVER); // true
+        var_dump($this->getRequest()->getEnv() === $_ENV); // true
+        var_dump($this->getRequest()->getLanguage()); //
     }
 
     /**
@@ -35,32 +40,19 @@ class RequestController extends Controller_Abstract
     {
         $request = $this->getRequest();
 
-        echo "get('test'))" . PHP_EOL;
         var_dump($request->get('test'));
-        echo PHP_EOL . 'getQuery:' . PHP_EOL;
         var_dump($request->getQuery());
-        echo 'getQuery:' . PHP_EOL;
         var_dump($request->getQuery('test'));
-        echo 'getPost:' . PHP_EOL;
         var_dump($request->getPost());
-        echo 'getPost:' . PHP_EOL;
         var_dump($request->getPost('test'));
-        echo 'getParams:' . PHP_EOL;
         var_dump($request->getParams());
-        echo 'getParam:' . PHP_EOL;
         var_dump($request->getParam('uid'));
-        echo 'getRequestUri:' . PHP_EOL;
         var_dump($request->getRequestUri());
-        echo 'getMethod:' . PHP_EOL;
         var_dump($request->getMethod());
-        echo 'getBaseUri:' . PHP_EOL;
         var_dump($request->getBaseUri());
-        echo 'getCookie:' . PHP_EOL;
         var_dump($request->getCookie());
-        echo 'getFiles:' . PHP_EOL;
         var_dump($request->getFiles());
 
-        exit;
     }
 
     /**
@@ -72,11 +64,9 @@ class RequestController extends Controller_Abstract
         var_dump($this->getRequest()->isGet());
         var_dump($this->getRequest()->isPost());
         var_dump($this->getRequest()->isPut());
-        var_dump($this->getRequest()->isXmlHttpRequest());
+        var_dump($this->getRequest()->isXmlHttpRequest()); // 是否为ajax请求
         var_dump($this->getRequest()->isHead());
         var_dump($this->getRequest()->isOptions());
-
-        exit;
     }
 
     /**
@@ -100,8 +90,6 @@ class RequestController extends Controller_Abstract
 
         $this->getRequest()->setRouted();
         var_dump($this->getRequest()->isRouted());
-
-        // 有获取就有set相关的方法
-        exit;
     }
+
 }
