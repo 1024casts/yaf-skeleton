@@ -1,9 +1,9 @@
 <?php
 
 use App\Defines\Code;
-use Core\Mvc\Controller\Console;
-use Core\Di\InjectionWareTrait;
-use Core\Events\ManagerWareTrait;
+use PHPCasts\Mvc\Controller\Console;
+use PHPCasts\Di\InjectionWareTrait;
+use PHPCasts\Events\ManagerWareTrait;
 
 class DemoController extends Console
 {
@@ -38,5 +38,13 @@ class DemoController extends Console
         global $argv;
 
         echo sprintf('Usage: %s %s -uid=123 [-username=user1]', $argv[0], $argv[1]), PHP_EOL;
+    }
+
+    /**
+     * 执行方法： php bin/run Demo/response
+     */
+    public function responseAction()
+    {
+        var_dump(get_class_methods(Yaf\Response\Http::class));
     }
 }
