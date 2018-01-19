@@ -4,6 +4,10 @@ use Yaf\Controller_Abstract;
 use Yaf\Request\Http as Request_Http;
 use Yaf\Request\Simple as Request_Simple;
 
+/**
+ * Yaf\Request\Http 和 Yaf\Request\Simple 包含的方法是一样的
+ * Class RequestController
+ */
 class RequestController extends Controller_Abstract
 {
 
@@ -11,6 +15,11 @@ class RequestController extends Controller_Abstract
     {
         // 禁用模板渲染
         Yaf\Dispatcher::getInstance()->disableView();
+    }
+
+    public function indexAction()
+    {
+        var_dump(get_class_methods(Yaf\Request\Http::class));
     }
 
     public function serverInfoAction()

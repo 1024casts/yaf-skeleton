@@ -44,6 +44,15 @@ class DemoController extends Console
      * 测试 response/cli
      * 执行方法： php bin/run Demo/response
      */
+    public function requestAction()
+    {
+        var_dump(get_class_methods(Yaf\Request\Simple::class));
+    }
+
+    /**
+     * 测试 response/cli
+     * 执行方法： php bin/run Demo/response
+     */
     public function responseAction()
     {
         var_dump(get_class_methods(Yaf\Response\Cli::class));
