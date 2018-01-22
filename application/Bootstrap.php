@@ -93,47 +93,20 @@ class Bootstrap extends Bootstrap_Abstract
         //$router->addRoute('name', $route);
 
         // 开启regex路由协议
-        $router = $dispatcher->getRouter();
-        $route = new Yaf\Route\Regex(
-            '/product\/([\d]+)\/([\d]+)/',
-            [
-                'module' => 'example',
-                'controller' => 'route',
-                'action' => 'regex'
-            ],
-            [
-                1 => 'id',
-                2 => 'tag_id'
-            ]
-        );
-        $router->addRoute('name', $route);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //$router = $dispatcher->getRouter();
+        //$route = new Yaf\Route\Regex(
+        //    '/product\/([\d]+)\/([\d]+)/',
+        //    [
+        //        'module' => 'example',
+        //        'controller' => 'route',
+        //        'action' => 'regex'
+        //    ],
+        //    [
+        //        1 => 'id',
+        //        2 => 'tag_id'
+        //    ]
+        //);
+        //$router->addRoute('name', $route);
 
         // 开启map路由协议
         //$router = $dispatcher->getRouter();
