@@ -14,12 +14,6 @@ class IndexController extends Web
     public function init()
     {
         parent::init();
-
-        // 如果不调用该代码，display后，框架还会再自动渲染代码一次，导致重复渲染
-        // TODO: 放到web基类里
-        Yaf\Dispatcher::getInstance()->autoRender(false);
-        // or
-        //Yaf\Dispatcher::getInstance()->disableView();
     }
 
     public function helloAction()
@@ -32,8 +26,8 @@ class IndexController extends Web
      */
     public function testAction()
     {
-        $data = ['message'=> 'Hello Yaf!', 'name'=>'user2'];
+        $this->assign('message', 'Hello Yaf');
 
-        $this->display('test', $data);
+        $this->display('test');
     }
 }
