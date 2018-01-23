@@ -4,7 +4,6 @@ use PHPCasts\Mvc\Controller\Web;
 
 class IndexController extends Web
 {
-
     /**
      * 忽略用户登录的action
      *
@@ -12,11 +11,20 @@ class IndexController extends Web
      */
     protected static $ignoreUserAuth = ['test','index'];
 
+    public function init()
+    {
+        parent::init();
+
+        // 如果不调用该代码，display后，框架还会再自动渲染代码一次，导致重复渲染
+        // TODO: 放到web基类里
+        Yaf\Dispatcher::getInstance()->autoRender(false);
+        // or
+        //Yaf\Dispatcher::getInstance()->disableView();
+    }
+
     public function helloAction()
     {
         echo 'Hello World!';
-
-        exit;
     }
 
     /**
@@ -24,13 +32,8 @@ class IndexController extends Web
      */
     public function testAction()
     {
-        $data = 'Hello Yaf!';
+        $data = ['message'=> 'Hello Yaf!', 'name'=>'user2'];
 
-        $users = [['name'=> 'user1'], ['name'=>'user2']];
-
-        $this->getView()->assign("content", $data);
-        $this->getView()->assign("users", $users);
-
-        return $this->display('test', ['content' => $data]);
+        $this->display('test', $data);
     }
 }
