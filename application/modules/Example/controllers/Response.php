@@ -40,4 +40,14 @@ class ResponseController extends Controller_Abstract
 
         $response->response();
     }
+
+    public function httpAction()
+    {
+        var_dump(get_class_methods(Yaf\Response\Http::class));
+    }
+
+    public function cliAction()
+    {
+        var_dump(get_class_methods(Yaf\Response\Cli::class));
+    }
 }
