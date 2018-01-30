@@ -9,12 +9,14 @@ class ResponseController extends Controller_Abstract
     {
         // 禁用模板渲染
         Yaf\Dispatcher::getInstance()->disableView();
+        Yaf\Dispatcher::getInstance()->returnResponse(true);
     }
 
     public function indexAction()
     {
         $response = $this->getResponse();
-        var_dump(get_class_methods($response));
+        //$r = new ReflectionClass($response);
+        //var_dump($r->getProperties());
 
         // output: Yaf_Request_Http
         echo "response class 所属实例: ";
@@ -33,8 +35,8 @@ class ResponseController extends Controller_Abstract
         //$response->setAllHeaders(['Yaf-Version' => "3.0.4", "PHP-Version" => 7.0]);
         //$response->setRedirect("http://www.baidu.com");
 
-        var_dump($response->getBody()); //default
-        var_dump($response->getBody(Response_Http::DEFAULT_BODY)); //same as above
+        var_dump($response->getBody()); // default
+        var_dump($response->getBody(Response_Http::DEFAULT_BODY)); // same as above
         var_dump($response->getBody("footer"));
         var_dump($response->getBody(NULL)); //get all
 
@@ -43,11 +45,13 @@ class ResponseController extends Controller_Abstract
 
     public function httpAction()
     {
+        // 获取 Yaf\Response\Http 类中支持的方法
         var_dump(get_class_methods(Yaf\Response\Http::class));
     }
 
     public function cliAction()
     {
+        // 获取 Yaf\Response\Cli 类中支持的方法
         var_dump(get_class_methods(Yaf\Response\Cli::class));
     }
 }
