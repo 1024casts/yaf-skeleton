@@ -9,6 +9,7 @@ class ResponseController extends Controller_Abstract
     {
         // 禁用模板渲染
         Yaf\Dispatcher::getInstance()->disableView();
+        // see: http://www.laruence.com/manual/yaf.class.dispatcher.returnResponse.html
         Yaf\Dispatcher::getInstance()->returnResponse(true);
     }
 
