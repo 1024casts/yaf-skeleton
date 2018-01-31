@@ -7,6 +7,7 @@ class IndexController extends Api
     public function testAction()
     {
         Yaf\Dispatcher::getInstance()->autoRender(false);
-        $this->success();
+        $data = ['uid'=>1, 'name' => 'test']; // 你的业务数据
+        $this->success($data);
     }
 }
