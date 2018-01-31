@@ -1,6 +1,7 @@
 <?php
 
-use Core\Controllers\Web;
+use PHPCasts\Mvc\Controller\Web;
+
 /**
  * 首页
  *
