@@ -10,17 +10,21 @@ use Yaf\Request\Simple as Request_Simple;
  */
 class RequestController extends Controller_Abstract
 {
-
     public function init()
     {
         // 禁用模板渲染
         Yaf\Dispatcher::getInstance()->disableView();
     }
 
-    public function indexAction()
+    public function httpAction()
     {
         var_dump($this->getRequest()->getParam('uid'));
         //var_dump(get_class_methods(Yaf\Request\Http::class));
+    }
+
+    public function simpleAction()
+    {
+        var_dump(get_class_methods(Yaf\Request\Simple::class));
     }
 
     public function serverInfoAction()
@@ -93,21 +97,14 @@ class RequestController extends Controller_Abstract
     public function dispatchAction()
     {
         $this->getRequest()->setModuleName('Api');
-        var_dump($this->getRequest()->getModuleName());
 
         $this->getRequest()->setControllerName('Index');
-        var_dump($this->getRequest()->getControllerName());
 
         $this->getRequest()->setActionName('xxx');
-        var_dump($this->getRequest()->getActionName());
-
-        var_dump($this->getRequest()->getException());
 
         $this->getRequest()->setDispatched();
-        var_dump($this->getRequest()->isDispatched());
 
         $this->getRequest()->setRouted();
-        var_dump($this->getRequest()->isRouted());
     }
 
 }
