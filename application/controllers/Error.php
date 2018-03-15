@@ -14,6 +14,7 @@ class ErrorController extends Web
      */
     public function errorAction(Exception $exception)
     {
+        // $exception = $this->getRequest()->getException();
         $this->_view->setScriptPath(APP_PATH . '/views');
 
         switch ($exception->getCode()) {

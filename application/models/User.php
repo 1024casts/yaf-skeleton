@@ -1,8 +1,13 @@
 <?php
 
-use Core\Databases\RelationDb as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use PHPCasts\Databases\RelationDb as Model;
 
+/**
+ * 使用基于Laravel的Eloquent
+ *
+ * Class UserModel
+ */
 class UserModel extends Model
 {
     // 软删除

@@ -55,7 +55,7 @@ class Bootstrap extends Bootstrap_Abstract
         //$dispatcher->registerPlugin(new ModuleBootstrapPlugin());
 
         if (ini_get('yaf.environ') != 'production') {
-            $dispatcher->registerPlugin(new QueryLogPlugin());
+            $dispatcher->registerPlugin(new MysqlQueryLogPlugin());
         }
     }
 
@@ -168,11 +168,8 @@ class Bootstrap extends Bootstrap_Abstract
      */
     public function _initView(Dispatcher $dispatcher)
     {
-        //在这里注册自己的view控制器，例如smarty
-        if ($dispatcher->getRequest()->getMethod() === 'CLI' ) {
-            // 不自动渲染视图
-            $dispatcher->autoRender(false);
-        }
+        // 不自动渲染视图
+        $dispatcher->autoRender(false);
     }
 
     /**

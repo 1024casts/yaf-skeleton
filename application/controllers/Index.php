@@ -14,6 +14,19 @@ class IndexController extends PHPCasts\Mvc\Controller\Web
         parent::init();
     }
 
+    public function aaaAction()
+    {
+        \Yaf\Dispatcher::getInstance()->disableView();
+        echo 'i am a_b';
+    }
+
+    public function indexAction()
+    {
+        \Yaf\Dispatcher::getInstance()->disableView();
+
+        echo 'Index';
+    }
+
     public function testAction()
     {
         //// 获取

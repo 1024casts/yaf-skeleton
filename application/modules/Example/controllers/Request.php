@@ -19,7 +19,8 @@ class RequestController extends Controller_Abstract
 
     public function indexAction()
     {
-        var_dump(get_class_methods(Yaf\Request\Http::class));
+        var_dump($this->getRequest()->getParam('uid'));
+        //var_dump(get_class_methods(Yaf\Request\Http::class));
     }
 
     public function serverInfoAction()
@@ -49,18 +50,26 @@ class RequestController extends Controller_Abstract
     {
         $request = $this->getRequest();
 
-        var_dump($request->get('test'));
-        var_dump($request->getQuery());
-        var_dump($request->getQuery('test'));
-        var_dump($request->getPost());
-        var_dump($request->getPost('test'));
-        var_dump($request->getParams());
-        var_dump($request->getParam('uid'));
-        var_dump($request->getRequestUri());
-        var_dump($request->getMethod());
-        var_dump($request->getBaseUri());
-        var_dump($request->getCookie());
-        var_dump($request->getFiles());
+        echo '<pre>';
+
+        // http://yaf-skel.com/example/request/params?user=test&uid=1
+
+        var_dump($request->get('user'));        // test
+        var_dump($request->getQuery());         // ['user' => test, 'uid' => 1]
+        var_dump($request->getQuery('user'));   // test
+        var_dump($request->getPost());          // empty
+        var_dump($request->getPost('user'));    // null
+
+        var_dump($request->getRequestUri());    // /example/request/params
+        var_dump($request->getMethod());        // GET
+        var_dump($request->getBaseUri());       // ''
+        var_dump($request->getCookie());        // emtpy
+        var_dump($request->getFiles());         // empty
+
+        // http://yaf-skel.com/example/request/params/user/test/uid/1
+        var_dump($request->getParams());         // ['user' => test, 'uid' => 1]
+        var_dump($request->getParam('uid'));     // 1
+        var_dump($request->getRequestUri());     // /example/request/params/user/test/uid/1
 
     }
 
