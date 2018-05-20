@@ -4,7 +4,7 @@ return [
     /** ====================must setting, being used everywhere==================== */
 
     // global events manager for whole system
-    'eventsManager' => PHPCasts\Events\Manager::class,
+    'eventsManager' => PHPCasts\Yaf\Events\Manager::class,
 
     'config' => function () {
         return \Yaf\Registry::get('config');
@@ -17,12 +17,12 @@ return [
         ) {
             return new Monolog\Logger('console-name', [new Monolog\Handler\StreamHandler('php://output')]);
         } else {
-            return new PHPCasts\Log\LoggerWrapper();
+            return new PHPCasts\Yaf\Log\LoggerWrapper();
         }
     },
 
     'sessionBag' => function () {
-        return new PHPCasts\Caches\Memory();
+        return new PHPCasts\Yaf\Caches\Memory();
     },
     'session' => function () {
         return \Yaf\Session::getInstance();
@@ -31,7 +31,7 @@ return [
     /** ==============================custom setting============================== */
 
     'cache' => function ($c) {
-        return new PHPCasts\Caches\Redis($c['redis']);
+        return new PHPCasts\Yaf\Caches\Redis($c['redis']);
     },
     'redis' => function ($c) {
         $config = $c['config']['redis']['default'];

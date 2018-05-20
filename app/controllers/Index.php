@@ -1,9 +1,8 @@
 <?php
 
-use PHPCasts\Log\Log;
-use Yaf\Request\Http;
+use PHPCasts\Yaf\Log\Log;
 
-class IndexController extends PHPCasts\Mvc\Controller\Web
+class IndexController extends PHPCasts\Yaf\Mvc\Controller\Web
 {
     /**
      * 初始化由yaf自动调用
@@ -16,14 +15,11 @@ class IndexController extends PHPCasts\Mvc\Controller\Web
 
     public function aaaAction()
     {
-        \Yaf\Dispatcher::getInstance()->disableView();
         echo 'i am a_b';
     }
 
     public function indexAction()
     {
-        \Yaf\Dispatcher::getInstance()->disableView();
-
         echo 'Index';
     }
 
@@ -38,8 +34,6 @@ class IndexController extends PHPCasts\Mvc\Controller\Web
 
     public function jsonAction()
     {
-        \Yaf\Dispatcher::getInstance()->disableView();
-
         $json = json_encode(['uid'=>1,'username'=>'admin']);
         $this->getResponse()->setBody($json);
     }
@@ -71,8 +65,6 @@ class IndexController extends PHPCasts\Mvc\Controller\Web
 
     public function test1Action()
     {
-        //Dispatcher::getInstance()->disableView(0);
-        //Dispatcher::getInstance()->disableView();
         $client = new YarClient(
             array(
                 'controller' => 'index',
