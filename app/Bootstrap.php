@@ -31,6 +31,11 @@ class Bootstrap extends Bootstrap_Abstract
     {
         // 保存配置
         $this->config = Application::app()->getConfig()->toArray();
+
+        if (empty($_SERVER['HTTP_X_REQUEST_ID'])) {
+            $_SERVER['HTTP_X_REQUEST_ID'] = uniqid();
+        }
+
         Registry::set('config', $this->config);
     }
 
@@ -52,11 +57,7 @@ class Bootstrap extends Bootstrap_Abstract
      */
     public function _initPlugin(Dispatcher $dispatcher)
     {
-        //$dispatcher->registerPlugin(new ModuleBootstrapPlugin());
-
-        if (ini_get('yaf.environ') != 'production') {
-            $dispatcher->registerPlugin(new MysqlQueryLogPlugin());
-        }
+        $dispatcher->registerPlugin(new ModuleBootstrapPlugin());
     }
 
     /**
@@ -151,6 +152,7 @@ class Bootstrap extends Bootstrap_Abstract
             $listeners = array_merge($listeners, require $envListener);
         }
 
+        /** @var \PHPCasts\Yaf\Events\Manager $em */
         $em = Registry::get('di')->get('eventsManager');
         foreach ($listeners as $event => $handler) {
             if (is_array($handler)) {
@@ -177,7 +179,7 @@ class Bootstrap extends Bootstrap_Abstract
      *
      * @param Dispatcher|\Yaf\Dispatcher $dispatcher
      */
-    public function _initDefaultDbAdapter(Dispatcher $dispatcher)
+    public function _initDatabase(Dispatcher $dispatcher)
     {
         $capsule = new Capsule();
         $db = $this->config['database'];
@@ -187,11 +189,5 @@ class Bootstrap extends Bootstrap_Abstract
         $capsule->bootEloquent();
 
         class_alias('\Illuminate\Database\Capsule\Manager', 'DB');
-
-        // todo: 记录执行的sql
-        // see: https://github.com/JustPoet/eyaf
-        if (ini_get('yaf.environ') != 'production') {
-            $capsule->getConnection()->enableQueryLog();
-        }
     }
 }

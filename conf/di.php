@@ -33,6 +33,7 @@ return [
     'cache' => function ($c) {
         return new PHPCasts\Yaf\Caches\Redis($c['redis']);
     },
+
     'redis' => function ($c) {
         $config = $c['config']['redis']['default'];
 
