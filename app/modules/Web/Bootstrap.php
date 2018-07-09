@@ -15,17 +15,17 @@ use Illuminate\View\Engines\EngineResolver;
 use Illuminate\View\Engines\PhpEngine;
 use Illuminate\View\FileViewFinder;
 
-use PHPCasts\Views\Adapter\Dispatcher as BladeDispatcher;
-use PHPCasts\Views\Adapter\BladeAdapter;
-use PHPCasts\Views\Adapter\TwigAdapter;
+use PHPCasts\Yaf\Views\Adapter\Dispatcher as BladeDispatcher;
+use PHPCasts\Yaf\Views\Adapter\BladeAdapter;
+use PHPCasts\Yaf\Views\Adapter\TwigAdapter;
 
 
 class Bootstrap extends Bootstrap_Abstract
 {
     /**
-     * @var \PHPCasts\Di\ContainerInterface|mixed
+     * @var \PHPCasts\Yaf\Di\ContainerInterface|mixed
      */
-    private $di;
+    private $container;
 
     private $ctrl;
     private $ctrlCls;
@@ -33,7 +33,7 @@ class Bootstrap extends Bootstrap_Abstract
 
     public function __construct()
     {
-        $this->di = Registry::get('di');
+        $this->container = Registry::get('container');
     }
 
     public function _initAuth(Dispatcher $dispatcher)
@@ -82,14 +82,14 @@ class Bootstrap extends Bootstrap_Abstract
 
     private function setLoginedUser()
     {
-        $uid = $this->di->get('srv.user')->getCurrentUid();
+        $uid = $this->container->get('srv.user')->getCurrentUid();
         if (!$uid) {
             // throw new \Exception('用户未登录', Code::AUTH_FAILED);
         }
 
-        $userInfo = $this->di->get('srv.user')->getCurrentUserInfo();
-        $this->di->get('sessionBag')->set('userInfo', $userInfo);
-        $this->di->get('sessionBag')->set('uid', $uid);
+        $userInfo = $this->container->get('srv.user')->getCurrentUserInfo();
+        $this->container->get('sessionBag')->set('userInfo', $userInfo);
+        $this->container->get('sessionBag')->set('uid', $uid);
     }
 
     /**
