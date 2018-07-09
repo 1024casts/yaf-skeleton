@@ -1,6 +1,6 @@
 <?php
 
-use PHPCasts\Mvc\Controller\Web;
+use PHPCasts\Yaf\Mvc\Controller\Web;
 /**
  * 首页
  *

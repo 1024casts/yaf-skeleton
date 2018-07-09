@@ -1,6 +1,6 @@
 <?php
 
-use PHPCasts\Mvc\Controller\Api;
+use PHPCasts\Yaf\Mvc\Controller\Api;
 
 class IndexController extends Api
 {
