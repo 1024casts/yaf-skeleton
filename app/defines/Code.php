@@ -2,7 +2,7 @@
 
 namespace App\Defines;
 
-use Core\Http\Support\Defines\Code as CoreCode;
+use PHPCasts\Yaf\Http\Support\Defines\Code as CoreCode;
 
 class Code extends CoreCode
 {
