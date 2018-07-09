@@ -783,12 +783,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/qloog/yaf-library.git",
-                "reference": "180b270dcde9b891e2a43778cbc53c504c24374f"
+                "reference": "59cc082c5f51a47c5fe3c59c0b6c1ebeeb29ff1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qloog/yaf-library/zipball/180b270dcde9b891e2a43778cbc53c504c24374f",
-                "reference": "180b270dcde9b891e2a43778cbc53c504c24374f",
+                "url": "https://api.github.com/repos/qloog/yaf-library/zipball/59cc082c5f51a47c5fe3c59c0b6c1ebeeb29ff1e",
+                "reference": "59cc082c5f51a47c5fe3c59c0b6c1ebeeb29ff1e",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "yaf",
                 "yaf-library"
             ],
-            "time": "2018-05-20T09:19:07+00:00"
+            "time": "2018-06-07T06:51:14+00:00"
         },
         {
             "name": "pimple/pimple",

@@ -14,7 +14,7 @@ use Yaf\Registry;
 use Yaf\Loader;
 use Yaf\Dispatcher;
 use Yaf\Application;
-use PHPCasts\Yaf\Di\Container;
+use PHPCasts\Yaf\ServiceContainer;
 use Illuminate\Events\Dispatcher as LDispatcher;
 use Illuminate\Container\Container as LContainer;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -125,16 +125,16 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initServices()
     {
         $services = [];
-        if (file_exists($basicService = APP_CONFIG_PATH . '/di.php') && is_readable($basicService)) {
+        if (file_exists($basicService = CONFIG_PATH . '/providers.php') && is_readable($basicService)) {
             $services = require $basicService;
         }
 
         $env = Application::app()->environ();
-        if (file_exists($envService = APP_CONFIG_PATH . '/' . $env . '/di.php') && is_readable($envService)) {
+        if (file_exists($envService = CONFIG_PATH . '/' . $env . '/providers.php') && is_readable($envService)) {
             $services = array_merge($services, require $envService);
         }
 
-        Registry::set('di', new Container($services));
+        Registry::set('container', new ServiceContainer($services));
     }
 
     /**
@@ -143,17 +143,17 @@ class Bootstrap extends Bootstrap_Abstract
     public function _initListener()
     {
         $listeners = [];
-        if (file_exists($basicListener = APP_CONFIG_PATH . '/listener.php')) {
+        if (file_exists($basicListener = CONFIG_PATH . '/listener.php')) {
             $listeners = require $basicListener;
         }
 
         $env = Application::app()->environ();
-        if (file_exists($envListener = APP_CONFIG_PATH . '/' . $env . '/listener.php') && is_readable($envListener)) {
+        if (file_exists($envListener = CONFIG_PATH . '/' . $env . '/listener.php') && is_readable($envListener)) {
             $listeners = array_merge($listeners, require $envListener);
         }
 
         /** @var \PHPCasts\Yaf\Events\Manager $em */
-        $em = Registry::get('di')->get('eventsManager');
+        $em = Registry::get('container')->get('eventsManager');
         foreach ($listeners as $event => $handler) {
             if (is_array($handler)) {
                 foreach ($handler as $h) {

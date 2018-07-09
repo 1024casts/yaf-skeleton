@@ -2,6 +2,7 @@
 
 namespace Web;
 
+use ReflectionClass;
 use Yaf\Bootstrap_Abstract;
 use Yaf\Dispatcher;
 use Yaf\Loader;
@@ -60,7 +61,7 @@ class Bootstrap extends Bootstrap_Abstract
 
     private function isIgnoreUserAuth()
     {
-        $ref = new \ReflectionClass($this->ctrlCls);
+        $ref = new ReflectionClass($this->ctrlCls);
         if (!$ref->hasProperty('ignoreUserAuth')) {
             return false;
         }
