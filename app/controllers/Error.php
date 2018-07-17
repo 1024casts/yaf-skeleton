@@ -1,7 +1,7 @@
 <?php
 
-use PHPCasts\Mvc\Controller\Web;
-use PHPCasts\Log\Log;
+use PHPCasts\Yaf\Mvc\Controller\Web;
+use PHPCasts\Yaf\Log\Log;
 
 /**
  * yaf 框架报错类调用
