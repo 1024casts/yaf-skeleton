@@ -14,6 +14,7 @@ use Yaf\Registry;
 use Yaf\Loader;
 use Yaf\Dispatcher;
 use Yaf\Application;
+
 use PHPCasts\Yaf\ServiceContainer;
 use Illuminate\Events\Dispatcher as LDispatcher;
 use Illuminate\Container\Container as LContainer;

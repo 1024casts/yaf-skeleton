@@ -1,9 +1,9 @@
 <?php
 
 use App\Defines\Code;
-use PHPCasts\Mvc\Controller\Console;
-use PHPCasts\Di\InjectionWareTrait;
-use PHPCasts\Events\ManagerWareTrait;
+use PHPCasts\Yaf\Mvc\Controller\Console;
+use PHPCasts\Yaf\Di\InjectionWareTrait;
+use PHPCasts\Yaf\Events\ManagerWareTrait;
 
 class DemoController extends Console
 {
