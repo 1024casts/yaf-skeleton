@@ -2,7 +2,7 @@
 <?php
 
 define('APP_ROOT', dirname(__DIR__));
-define('APP_PATH', APP_ROOT . '/application');
+define('APP_PATH', APP_ROOT . '/app');
 require APP_ROOT . '/vendor/autoload.php';
 
 use PHPCasts\Console\GenerateModule;
@@ -23,4 +23,8 @@ $application->add(new GeneratePlugin());
 $application->add(new Check());
 $application->add(new ServeCommand());
 
-$application->run();
+try {
+    $application->run();
+} catch (Exception $e) {
+    \PHPCasts\Yaf\Log\Log::warning('console run exception', ['msg' => $e->getMessage()]);
+}

@@ -2,7 +2,7 @@
 <?php
 
 define('APP_ROOT', dirname(__DIR__));
-define('APP_PATH', APP_ROOT . '/application');
+define('APP_PATH', APP_ROOT . '/app');
 define('APP_CONFIG_PATH', APP_ROOT . '/conf');
 defined('CONFIG_PATH') or define('CONFIG_PATH', APP_CONFIG_PATH);
 
