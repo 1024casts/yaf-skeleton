@@ -27,7 +27,7 @@
             "App\\Defines\\": "app/defines"
         },
         "files": [
-            "app/library/helpers.php"
+            "app/Helpers.php"
         ]
     },
     "repositories": {
