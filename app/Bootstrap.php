@@ -135,6 +135,7 @@ class Bootstrap extends Bootstrap_Abstract
             $services = array_merge($services, require $envService);
         }
 
+        $services = [];
         Registry::set('container', new ServiceContainer($services));
     }
 
