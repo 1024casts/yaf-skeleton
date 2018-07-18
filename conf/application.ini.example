@@ -76,6 +76,7 @@ cache.redis = default
 ; Redis
 redis.default.host = 127.0.0.1
 redis.default.port = 6379
+redis.default.timeout = 3
 
 ; database for Eloquent
 database.driver = mysql
