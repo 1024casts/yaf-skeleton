@@ -269,7 +269,7 @@ php bin/run Test/test   // Test 控制器下的test action
 
 ### 日志
 
-日志使用比较简单,在需要记录日志的电饭锅加入以下代码:
+日志使用比较简单,在需要记录日志的地方加入以下代码:
 ```php
 use Core\Log;
 
